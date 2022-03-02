@@ -1,12 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>Domain Default page</title>
-    <meta name="copyright" content="Copyright 1999-2021. Plesk International GmbH. All rights reserved.">
-    <script src="https://assets.plesk.com/static/default-website-content/public/default-website-index.js"></script>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
 </head>
-<body>
-    This is a default webpage generated for <script>document.write(location.hostname)</script> by Plesk.
+
+<body class="flex flex-row bg-slate-900 w-full h-auto">
+  <div id="app" class="flex justify-center items-center place-content-center"></div>
+  <script type="module" src="/src/main.js"></script>
+  <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
 </body>
+
 </html>
