@@ -1,17 +1,29 @@
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true,
-  },
-});
+<script>
+  import logo from "./logo/logo.vue";
+  export default {
+    components : {
+      logo
+    },
+    data() {
+      let h = window.innerHeight
+      window.addEventListener('resize', () => {
+        h = window.innerHeight
+      })
+      return {
+        justHeight: h
+      }
+    }
+  }
 </script>
 
 <template>
-  <div class="p-5">
-    <h1 class="text-3xl font-bold text-white">Silvia WowLife</h1>
+  <div class="bg-slate-900 flex flex-row" v-bind:style="{height: justHeight + 'px',}">
+    <div class="grid place-content-center w-full">
+      <logo />
+    </div>
   </div>
 </template>
 
-<style>
-</style>
+<script>
+
+</script>
