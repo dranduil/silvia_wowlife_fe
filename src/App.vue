@@ -1,8 +1,12 @@
-<script setup>
-
+<script>
+import Nav from '@/components/navigation/Nav.vue'
+export default {
+  components: {
+    Nav,
+  }
+}
 </script>
 <template>
-<router-link to="/">Home</router-link>
-<router-link to="/intro">Intro</router-link>
+  <Nav />
   <router-view></router-view>
 </template>

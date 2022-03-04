@@ -3,8 +3,8 @@ import intro from '@/views/intro.vue';
 import Home from '@/views/Home.vue';
 
 const routes = [
-    { path: '/', name: "Home", component: Home },
-    { path: '/intro', name: "Intro", component: intro }
+    { path: '/', name: "Intro", component: intro },
+    { path: '/home', name: "Home", component: Home }
 ]
 
 const router = new createRouter({

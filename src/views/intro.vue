@@ -5,9 +5,10 @@
       logo
     },
     data() {
-      let h = window.innerHeight
+      let menuSize = document.querySelector('#nav').offsetHeight
+      let h = window.innerHeight - menuSize
       window.addEventListener('resize', () => {
-        h = window.innerHeight
+        h = window.innerHeight - menuSize
       })
       return {
         justHeight: h
