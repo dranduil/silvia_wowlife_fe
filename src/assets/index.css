@@ -12,18 +12,18 @@
 #logo path:nth-child(1){
     stroke-dasharray: 2513;
     stroke-dashoffset: 2513;
-    animation: line-anim 3s ease forwards 1;
+    animation: line-anim 5s ease forwards;
 
 }
 #logo path:nth-child(2){
     stroke-dasharray: 105;
     stroke-dashoffset: 105;
-    animation: line-anim 1s ease forwards 3s;
+    animation: line-anim 5s ease forwards 1s;
 }
 #logo path:nth-child(3){
     stroke-dasharray: 6495;
     stroke-dashoffset: 6495;
-    animation: line-anim 5s ease forwards 24s;
+    animation: line-anim 5s ease forwards 2s;
 }
 
 
