@@ -1,13 +1,14 @@
 <script>
-  import logo from "./logo/logo.vue";
+  import logo from "@/components/logo/logo.vue";
   export default {
     components : {
       logo
     },
     data() {
-      let h = window.innerHeight
+      let menuSize = document.querySelector('#nav').offsetHeight
+      let h = window.innerHeight - menuSize
       window.addEventListener('resize', () => {
-        h = window.innerHeight
+        h = window.innerHeight - menuSize
       })
       return {
         justHeight: h

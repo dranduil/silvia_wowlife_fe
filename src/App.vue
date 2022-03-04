@@ -1,10 +1,12 @@
-<script setup>
-import HelloWorld from "./components/HelloWorld.vue";
+<script>
+import Nav from '@/components/navigation/Nav.vue'
+export default {
+  components: {
+    Nav,
+  }
+}
 </script>
-
 <template>
-  <HelloWorld/>
+  <Nav />
+  <router-view></router-view>
 </template>
-
-<style>
-</style>
