@@ -68,7 +68,7 @@
         @include border-radius(0.375rem);
         &-top {
             border-top-left-radius: 0.375rem;
-            border-top-right-radius: 0.375rem; 
+            border-top-right-radius: 0.375rem;
         }
     }
     &-body-s1 {
@@ -127,7 +127,7 @@
         }
        .card-body {
            position: relative;
-       } 
+       }
        &-s1 {
            .card-body {
                display: flex;
@@ -369,7 +369,7 @@
                     @include border-radius(100%);
                 }
             }
-            
+
         }
         &-s2 {
             .card-media-img {
@@ -761,7 +761,7 @@
         &-img {
             &-height {
                 height: 426px;
-                object-fit: cover;
+                object-fit: fill;
             }
         }
     }
