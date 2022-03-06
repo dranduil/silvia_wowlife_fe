@@ -1,12 +1,9 @@
+<template>
+  <router-view :key="$route.path"/>
+</template>
+
 <script>
-import Nav from '@/components/navigation/Nav.vue'
 export default {
-  components: {
-    Nav,
-  }
+  name: 'App',
 }
 </script>
-<template>
-  <Nav />
-  <router-view></router-view>
-</template>
