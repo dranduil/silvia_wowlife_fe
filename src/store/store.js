@@ -314,7 +314,7 @@ let SectionData = {
       {
         id: 2,
         img: require('@/images/thumb/nft3.jpg'),
-        imgLg: require('@/images/thumb/nft-lg2.jpg'),
+        imgLg: require('@/images/thumb/nft-lg.jpg'),
         title: 'Operation Jade Fury',
         content: 'Bazzors is a tiny buzzing, electrifying and irascible Elfin. Bazzors appear intermittently during thunderstorms in the Elfin Kingdom ',
         author: 'CanvaNetwork',
@@ -364,7 +364,7 @@ let SectionData = {
       {
         id: 3,
         img: require('@/images/thumb/nft4.jpg'),
-        imgLg: require('@/images/thumb/nft-lg3.jpg'),
+        imgLg: require('@/images/thumb/nft-lg.jpg'),
         title: 'Unboxing The Compass',
         content: 'According to our idea, REAL BORED APE would look exactly like this. Have you ever seen this tough guy on the streets of your city?',
         author: 'MoveNetwork',
@@ -413,7 +413,7 @@ let SectionData = {
       {
         id: 4,
         img: require('@/images/thumb/nft5.jpg'),
-        imgLg: require('@/images/thumb/nft-lg4.jpg'),
+        imgLg: require('@/images/thumb/nft-lg.jpg'),
         title: 'Rendering by the Water',
         content: 'Limited Edition *digital-only* "CB Galaxy" style Coke Boys LA sneakers wearable in the Decentraland metaverse',
         author: 'RukiStudio',
