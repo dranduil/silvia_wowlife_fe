@@ -1,9 +1,13 @@
 export const getters = {
     GET_GENERAL_SETTINGS: (state) => {
-        return state.settings.general
+        return state
     },
 
     GET_LOADING_TEXT: (state) => {
-        return state.loadingText
+        return state
+    },
+
+    GET_MENU_LINKS: (state) => {
+        return state.menu
     }
 }

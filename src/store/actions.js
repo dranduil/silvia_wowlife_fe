@@ -1,15 +1,16 @@
 import Axios from 'axios'
-
+import config from '@/config'
 export const actions = {
     SAVE_SETTINGS: ({ commit }, payload) => {
         commit('SAVING')
-        let url = wpvkAdminLocalizer.apiUrl + '/wpvk/v1/settings'
+        let url = config.url_api
         Axios.post(url, {
             firstname: payload.firstname,
             lastname: payload.lastname,
             email: payload.email,
         })
             .then((response) => {
+                console.log(response)
                 commit('SAVED')
             })
             .catch((error) => {
@@ -18,7 +19,7 @@ export const actions = {
     },
 
     FETCH_SETTINGS: ({ commit }, payload) => {
-        let url = wpvkAdminLocalizer.apiUrl + '/wpvk/v1/settings'
+        let url = config.url_api
         Axios.get(url)
             .then((response) => {
                 payload = response.data
