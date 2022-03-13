@@ -5,7 +5,7 @@
                 <div class="col-lg-6 col-sm-9">
                     <div class="row gx-4">
                         <div class="col-xl-8">
-                            <div class="card card-s2" v-for="product in showItemSingle" :key="product.id">
+                            <div class="card card-s2" v-for="product in showItem.slice(0,1)" :key="product.id">
                                 <div class="card-image">
                                     <img :src="product.imgLg" alt="" class="card-img-top card-img-height">
                                 </div>
@@ -38,7 +38,7 @@
                             </div><!-- end card -->
                         </div>
                         <div class="col-xl-4 d-xl-block d-none">
-                            <div class="card card-s2" v-for="product in showItem" :key="product.id">
+                            <div class="card card-s2" v-for="product in showItem.slice(1,3)" :key="product.id">
                                 <div class="card-image">
                                     <img :src="product.imgLg" alt="" class="card-img-top">
                                 </div>

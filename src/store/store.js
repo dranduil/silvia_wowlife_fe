@@ -162,13 +162,13 @@ let SectionData = {
   btnDataThree: [
     {
       btnClass: 'btn-lg btn-dark',
-      title: 'Explore',
-      path: '/explore'
+      title: 'View Collections',
+      path: '/collections'
     },
     {
       btnClass: 'btn-lg btn-outline-dark',
       title: 'Create',
-      path: '/create'
+      path: '#'
     }
   ],
   // Hero btn data
