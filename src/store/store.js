@@ -72,10 +72,10 @@ let SectionData = {
   // Breadcrumb data
   breadcrumbData: {
     breadcrumbList: {
-      title: 'Explore',
+      title: 'Collections',
       navList: [
         {
-          title: 'Explore'
+          title: 'Collections'
         }
       ]
     },
@@ -202,7 +202,7 @@ let SectionData = {
     },
     menuList2: {
       title: 'Collections',
-      path: '/explore'
+      path: '/collections'
       // navList: [
       //   {
       //     id: 1,
@@ -263,590 +263,128 @@ let SectionData = {
     products: [
       {
         id: 1,
-        img: require('@/images/thumb/nft-2.jpg'),
-        imgLg: require('@/images/thumb/nft-lg.jpg'),
-        title: 'One Tribe Black Edition',
-        content: 'Digital-only* "CB Galaxy" style Coke Boys LA sneakers wearable in the Decentraland metaverse',
-        author: 'ZeniconStudio',
-        authorLink: '/author',
-        price: 14,
-        priceTwo: 1.32,
-        metaText: 'Not for sale',
-        metaTextTwo: '500 editions',
-        metaTextThree: 'Highest bid <span class="text-primary fw-semibold">0.072 ETH</span>',
+        img: require('@/images/thumb/sfinge.jpg'),
+        imgLg: require('@/images/thumb/sfinge.jpg'),
+        title: 'Sfinge',
+        content: '',
+        author: 'silviadelchiaro',
+        authorLink: '#',
+        price: 5000,
+        priceTwo: 62,
+        metaText: 'sale',
+        metaTextTwo: '1 Limit Edition',
+        metaTextThree: '',
         avatar: require('@/images/thumb/avatar.jpg'),
-        userName: '@zenicon_studio',
-        followersText: '1.3k Followers',
-        authorName: 'Zenicon Studio',
+        userName: '@silviadelchiaro',
+        followersText: '',
+        authorName: 'Silvia del Chiaro',
         desc: 'Complete account of the system, and expound the actual things.',
         name: 'art',
         category: 'art',
         itemToShow: 'show',
         itemToShowTwo: 'show',
         avatars: [
-          {
-            id: 1,
-            img: require('@/images/thumb/avatar.jpg'),
-            path: '/author'
-          },
-          {
-            id: 2,
-            img: require('@/images/thumb/avatar-2.jpg'),
-            path: '/author'
-          },
-          {
-            id: 3,
-            img: require('@/images/thumb/avatar-3.jpg'),
-            path: '/author'
-          },
-          {
-            id: 4,
-            img: require('@/images/thumb/avatar-4.jpg'),
-            path: '/author'
-          },
-          {
-            id: 5,
-            img: require('@/images/thumb/avatar-5.jpg'),
-            path: '/author'
-          },
-        ],
+        ]
       },
       {
         id: 2,
-        img: require('@/images/thumb/nft3.jpg'),
-        imgLg: require('@/images/thumb/nft-lg.jpg'),
-        title: 'Operation Jade Fury',
-        content: 'Bazzors is a tiny buzzing, electrifying and irascible Elfin. Bazzors appear intermittently during thunderstorms in the Elfin Kingdom ',
-        author: 'CanvaNetwork',
-        authorLink: '/author',
-        price: 10,
-        priceTwo: 0.32,
-        metaText: 'Not for sale',
-        metaTextTwo: '200 editions',
-        metaTextThree: 'Highest bid <span class="text-primary fw-semibold">1.072 ETH</span>',
-        avatar: require('@/images/thumb/avatar-2.jpg'),
-        userName: '@canva_network',
-        followersText: '1.3k Followers',
-        authorName: 'Canva Network',
+        img: require('@/images/thumb/fiore.jpg'),
+        imgLg: require('@/images/thumb/fiore.jpg'),
+        title: 'Fiore',
+        content: '',
+        author: 'silviadelchiaro',
+        authorLink: '#',
+        price: 5000,
+        priceTwo: 62,
+        metaText: 'sale',
+        metaTextTwo: '1 Limit Edition',
+        metaTextThree: '',
+        avatar: require('@/images/thumb/avatar.jpg'),
+        userName: '@silviadelchiaro',
+        followersText: '',
+        authorName: 'Silvia del Chiaro',
         desc: 'Complete account of the system, and expound the actual things.',
-        name: 'music',
-        category: 'music',
+        name: 'art',
+        category: 'art',
         itemToShow: 'show',
         itemToShowTwo: 'show',
         avatars: [
-          {
-            id: 1,
-            img: require('@/images/thumb/avatar.jpg'),
-            path: '/author'
-          },
-          {
-            id: 2,
-            img: require('@/images/thumb/avatar-2.jpg'),
-            path: '/author'
-          },
-          {
-            id: 3,
-            img: require('@/images/thumb/avatar-3.jpg'),
-            path: '/author'
-          },
-          {
-            id: 4,
-            img: require('@/images/thumb/avatar-4.jpg'),
-            path: '/author'
-          },
-          {
-            id: 5,
-            img: require('@/images/thumb/avatar-5.jpg'),
-            path: '/author'
-          },
-        ],
+        ]
       },
       {
         id: 3,
-        img: require('@/images/thumb/nft4.jpg'),
-        imgLg: require('@/images/thumb/nft-lg.jpg'),
-        title: 'Unboxing The Compass',
-        content: 'According to our idea, REAL BORED APE would look exactly like this. Have you ever seen this tough guy on the streets of your city?',
-        author: 'MoveNetwork',
-        authorLink: '/author',
-        price: 8.00,
-        priceTwo: 0.32,
-        metaText: 'Not for sale',
-        metaTextTwo: '200 editions',
-        metaTextThree: 'Highest bid <span class="text-primary fw-semibold">1.072 ETH</span>',
-        avatar: require('@/images/thumb/avatar-3.jpg'),
-        userName: '@move_network',
-        followersText: '1.3k Followers',
-        authorName: 'Move Network',
+        img: require('@/images/thumb/coscienza.jpg'),
+        imgLg: require('@/images/thumb/coscienza.jpg'),
+        title: 'Coscienza',
+        content: '',
+        author: 'silviadelchiaro',
+        authorLink: '#',
+        price: 5000,
+        priceTwo: 62,
+        metaText: 'sale',
+        metaTextTwo: '1 Limit Edition',
+        metaTextThree: '',
+        avatar: require('@/images/thumb/avatar.jpg'),
+        userName: '@silviadelchiaro',
+        followersText: '',
+        authorName: 'Silvia del Chiaro',
         desc: 'Complete account of the system, and expound the actual things.',
-        name: 'music',
-        category: 'music',
+        name: 'art',
+        category: 'art',
         itemToShow: 'show',
+        itemToShowTwo: 'show',
         avatars: [
-          {
-            id: 1,
-            img: require('@/images/thumb/avatar.jpg'),
-            path: '/author'
-          },
-          {
-            id: 2,
-            img: require('@/images/thumb/avatar-2.jpg'),
-            path: '/author'
-          },
-          {
-            id: 3,
-            img: require('@/images/thumb/avatar-3.jpg'),
-            path: '/author'
-          },
-          {
-            id: 4,
-            img: require('@/images/thumb/avatar-4.jpg'),
-            path: '/author'
-          },
-          {
-            id: 5,
-            img: require('@/images/thumb/avatar-5.jpg'),
-            path: '/author'
-          },
-        ],
+        ]
       },
       {
         id: 4,
-        img: require('@/images/thumb/nft5.jpg'),
-        imgLg: require('@/images/thumb/nft-lg.jpg'),
-        title: 'Rendering by the Water',
-        content: 'Limited Edition *digital-only* "CB Galaxy" style Coke Boys LA sneakers wearable in the Decentraland metaverse',
-        author: 'RukiStudio',
-        authorLink: '/author',
-        price: 11.00,
-        priceTwo: 0.32,
-        metaText: 'Not for sale',
-        metaTextTwo: '300 editions',
-        metaTextThree: 'Highest bid <span class="text-primary fw-semibold">1.072 ETH</span>',
-        avatar: require('@/images/thumb/avatar-4.jpg'),
-        userName: '@ruki_studio',
-        followersText: '1.3k Followers',
-        authorName: 'Ruki Studio',
+        img: require('@/images/thumb/eyesheart.jpg'),
+        imgLg: require('@/images/thumb/eyesheart.jpg'),
+        title: 'Eyes Heart',
+        content: '',
+        author: 'silviadelchiaro',
+        authorLink: '#',
+        price: 5000,
+        priceTwo: 62,
+        metaText: 'sale',
+        metaTextTwo: '1 Limit Edition',
+        metaTextThree: '',
+        avatar: require('@/images/thumb/avatar.jpg'),
+        userName: '@silviadelchiaro',
+        followersText: '',
+        authorName: 'Silvia del Chiaro',
         desc: 'Complete account of the system, and expound the actual things.',
-        name: 'music',
-        category: 'music',
+        name: 'art',
+        category: 'art',
         itemToShow: 'show',
-        itemToShowSingle: 'show',
+        itemToShowTwo: 'show',
         avatars: [
-          {
-            id: 1,
-            img: require('@/images/thumb/avatar.jpg'),
-            path: '/author'
-          },
-          {
-            id: 2,
-            img: require('@/images/thumb/avatar-2.jpg'),
-            path: '/author'
-          },
-          {
-            id: 3,
-            img: require('@/images/thumb/avatar-3.jpg'),
-            path: '/author'
-          },
-          {
-            id: 4,
-            img: require('@/images/thumb/avatar-4.jpg'),
-            path: '/author'
-          },
-          {
-            id: 5,
-            img: require('@/images/thumb/avatar-5.jpg'),
-            path: '/author'
-          },
-        ],
+        ]
       },
       {
         id: 5,
-        img: require('@/images/thumb/nft6.jpg'),
-        imgLg: require('@/images/thumb/nft-lg5.jpg'),
-        title: 'Divine Opulence',
-        content: 'Limited Edition *digital-only* "CB Galaxy" style Coke Boys LA sneakers wearable in the Decentraland metaverse',
-        author: 'DvisionNetwork',
-        authorLink: '/author',
-        price: 12.00,
-        priceTwo: 1.44,
-        metaText: 'Not for sale',
-        metaTextTwo: '200 editions',
-        metaTextThree: 'Highest bid <span class="text-primary fw-semibold">2.072 ETH</span>',
-        avatar: require('@/images/thumb/avatar-5.jpg'),
-        userName: '@dvison_network',
-        followersText: '2.4k Followers',
-        authorName: 'Dvision Network',
+        img: require('@/images/thumb/facetoface.jpg'),
+        imgLg: require('@/images/thumb/facetoface.jpg'),
+        title: 'Face to face',
+        content: '',
+        author: 'silviadelchiaro',
+        authorLink: '#',
+        price: 5000,
+        priceTwo: 62,
+        metaText: 'sale',
+        metaTextTwo: '1 Limit Edition',
+        metaTextThree: '',
+        avatar: require('@/images/thumb/avatar.jpg'),
+        userName: '@silviadelchiaro',
+        followersText: '',
+        authorName: 'Silvia del Chiaro',
         desc: 'Complete account of the system, and expound the actual things.',
         name: 'art',
         category: 'art',
         itemToShow: 'show',
+        itemToShowTwo: 'show',
         avatars: [
-          {
-            id: 1,
-            img: require('@/images/thumb/avatar.jpg'),
-            path: '/author'
-          },
-          {
-            id: 2,
-            img: require('@/images/thumb/avatar-2.jpg'),
-            path: '/author'
-          },
-          {
-            id: 3,
-            img: require('@/images/thumb/avatar-3.jpg'),
-            path: '/author'
-          },
-          {
-            id: 4,
-            img: require('@/images/thumb/avatar-4.jpg'),
-            path: '/author'
-          },
-          {
-            id: 5,
-            img: require('@/images/thumb/avatar-5.jpg'),
-            path: '/author'
-          },
-        ],
-      },
-      {
-        id: 6,
-        img: require('@/images/thumb/nft7.jpg'),
-        imgLg: require('@/images/thumb/nft-lg6.jpg'),
-        title: 'Sacral Metatron Cube',
-        content: 'Limited Edition *digital-only* "CB Galaxy" style Coke Boys LA sneakers wearable in the Decentraland metaverse',
-        author: 'KamranMedia',
-        authorLink: '/author',
-        price: 11.00,
-        priceTwo: 2.33,
-        metaText: 'Not for sale',
-        metaTextTwo: '200 editions',
-        metaTextThree: 'Highest bid <span class="text-primary fw-semibold">1.072 ETH</span>',
-        avatar: require('@/images/thumb/avatar-6.jpg'),
-        userName: '@kamran_media',
-        followersText: '2.4k Followers',
-        authorName: 'Kamran Media',
-        desc: 'Complete account of the system, and expound the actual things.',
-        name: 'art',
-        category: 'art',
-        itemToShow: 'show',
-        avatars: [
-          {
-            id: 1,
-            img: require('@/images/thumb/avatar.jpg'),
-            path: '/author'
-          },
-          {
-            id: 2,
-            img: require('@/images/thumb/avatar-2.jpg'),
-            path: '/author'
-          },
-          {
-            id: 3,
-            img: require('@/images/thumb/avatar-3.jpg'),
-            path: '/author'
-          },
-          {
-            id: 4,
-            img: require('@/images/thumb/avatar-4.jpg'),
-            path: '/author'
-          },
-          {
-            id: 5,
-            img: require('@/images/thumb/avatar-5.jpg'),
-            path: '/author'
-          },
-        ],
-      },
-      {
-        id: 7,
-        img: require('@/images/thumb/nft8.jpg'),
-        imgLg: require('@/images/thumb/nft-lg7.jpg'),
-        title: 'Girl warming up to a bed acrobat',
-        content: 'Limited Edition *digital-only* "CB Galaxy" style Coke Boys LA sneakers wearable in the Decentraland metaverse',
-        author: 'JisanMedia',
-        authorLink: '/author',
-        price: 8.00,
-        priceTwo: 0.33,
-        metaText: 'Not for sale',
-        metaTextTwo: '100 editions',
-        metaTextThree: 'Highest bid <span class="text-primary fw-semibold">1.072 ETH</span>',
-        avatar: require('@/images/thumb/avatar-7.jpg'),
-        userName: '@jisan_media',
-        followersText: '2.4k Followers',
-        authorName: 'Jisan Media',
-        desc: 'Complete account of the system, and expound the actual things.',
-        name: 'art',
-        category: 'art',
-        itemToShow: 'show',
-        avatars: [
-          {
-            id: 1,
-            img: require('@/images/thumb/avatar.jpg'),
-            path: '/author'
-          },
-          {
-            id: 2,
-            img: require('@/images/thumb/avatar-2.jpg'),
-            path: '/author'
-          },
-          {
-            id: 3,
-            img: require('@/images/thumb/avatar-3.jpg'),
-            path: '/author'
-          },
-          {
-            id: 4,
-            img: require('@/images/thumb/avatar-4.jpg'),
-            path: '/author'
-          },
-          {
-            id: 5,
-            img: require('@/images/thumb/avatar-5.jpg'),
-            path: '/author'
-          },
-        ],
-      },
-      {
-        id: 8,
-        img: require('@/images/thumb/nft9.jpg'),
-        imgLg: require('@/images/thumb/nft-lg8.jpg'),
-        title: 'Women Eyes Modern Art',
-        content: 'Limited Edition *digital-only* "CB Galaxy" style Coke Boys LA sneakers wearable in the Decentraland metaverse',
-        author: 'RifiUnited',
-        authorLink: '/author',
-        price: 8.00,
-        priceTwo: 0.33,
-        metaText: 'Not for sale',
-        metaTextTwo: '200 editions',
-        metaTextThree: 'Highest bid <span class="text-primary fw-semibold">1.072 ETH</span>',
-        avatar: require('@/images/thumb/avatar-8.jpg'),
-        userName: '@rifi_united',
-        followersText: '1.4k Followers',
-        authorName: 'Rifi United',
-        desc: 'Complete account of the system, and expound the actual things.',
-        name: 'collectibles',
-        category: 'collectibles',
-        itemToShow: 'show',
-        avatars: [
-          {
-            id: 1,
-            img: require('@/images/thumb/avatar.jpg'),
-            path: '/author'
-          },
-          {
-            id: 2,
-            img: require('@/images/thumb/avatar-2.jpg'),
-            path: '/author'
-          },
-          {
-            id: 3,
-            img: require('@/images/thumb/avatar-3.jpg'),
-            path: '/author'
-          },
-          {
-            id: 4,
-            img: require('@/images/thumb/avatar-4.jpg'),
-            path: '/author'
-          },
-          {
-            id: 5,
-            img: require('@/images/thumb/avatar-5.jpg'),
-            path: '/author'
-          },
-        ],
-      },
-      {
-        id: 9,
-        img: require('@/images/thumb/nft16.jpg'),
-        imgLg: require('@/images/thumb/nft-lg9.jpg'),
-        title: 'Puffy Baby Bird #151',
-        content: 'Limited Edition *digital-only* "CB Galaxy" style Coke Boys LA sneakers wearable in the Decentraland metaverse',
-        author: 'RadioCaca',
-        authorLink: '/author',
-        price: 12.00,
-        priceTwo: 1.33,
-        metaText: 'Not for sale',
-        metaTextTwo: '200 editions',
-        metaTextThree: 'Highest bid <span class="text-primary fw-semibold">1.072 ETH</span>',
-        avatar: require('@/images/thumb/avatar-9.jpg'),
-        userName: '@radio_caca',
-        followersText: '1.4k Followers',
-        authorName: 'Radio Caca',
-        desc: 'Complete account of the system, and expound the actual things.',
-        name: 'collectibles',
-        category: 'collectibles',
-        avatars: [
-          {
-            id: 1,
-            img: require('@/images/thumb/avatar.jpg'),
-            path: '/author'
-          },
-          {
-            id: 2,
-            img: require('@/images/thumb/avatar-2.jpg'),
-            path: '/author'
-          },
-          {
-            id: 3,
-            img: require('@/images/thumb/avatar-3.jpg'),
-            path: '/author'
-          },
-          {
-            id: 4,
-            img: require('@/images/thumb/avatar-4.jpg'),
-            path: '/author'
-          },
-          {
-            id: 5,
-            img: require('@/images/thumb/avatar-5.jpg'),
-            path: '/author'
-          },
-        ],
-      },
-      {
-        id: 10,
-        img: require('@/images/thumb/nft17.jpg'),
-        imgLg: require('@/images/thumb/nft-lg10.jpg'),
-        title: 'Wave1 - Titanium Ticket',
-        content: 'Limited Edition *digital-only* "CB Galaxy" style Coke Boys LA sneakers wearable in the Decentraland metaverse',
-        author: 'InfinityArt',
-        authorLink: '/author',
-        price: 10.00,
-        priceTwo: 0.33,
-        metaText: 'Not for sale',
-        metaTextTwo: '200 editions',
-        metaTextThree: 'Highest bid <span class="text-primary fw-semibold">1.072 ETH</span>',
-        avatar: require('@/images/thumb/avatar-10.jpg'),
-        userName: '@infinity_art',
-        followersText: '1.4k Followers',
-        authorName: 'Infinity Art',
-        desc: 'Complete account of the system, and expound the actual things.',
-        name: 'collectibles',
-        category: 'collectibles',
-        avatars: [
-          {
-            id: 1,
-            img: require('@/images/thumb/avatar.jpg'),
-            path: '/author'
-          },
-          {
-            id: 2,
-            img: require('@/images/thumb/avatar-2.jpg'),
-            path: '/author'
-          },
-          {
-            id: 3,
-            img: require('@/images/thumb/avatar-3.jpg'),
-            path: '/author'
-          },
-          {
-            id: 4,
-            img: require('@/images/thumb/avatar-4.jpg'),
-            path: '/author'
-          },
-          {
-            id: 5,
-            img: require('@/images/thumb/avatar-5.jpg'),
-            path: '/author'
-          },
-        ],
-      },
-      {
-        id: 11,
-        img: require('@/images/thumb/nft18.jpg'),
-        imgLg: require('@/images/thumb/nft-lg11.jpg'),
-        title: 'Saggezza 2/4. Cartier Edition',
-        content: 'Limited Edition *digital-only* "CB Galaxy" style Coke Boys LA sneakers wearable in the Decentraland metaverse',
-        author: 'InfinityArt',
-        authorLink: '/author',
-        price: 5.00,
-        priceTwo: 1.33,
-        metaText: 'Not for sale',
-        metaTextTwo: '200 editions',
-        metaTextThree: 'Highest bid <span class="text-primary fw-semibold">2.072 ETH</span>',
-        avatar: require('@/images/thumb/avatar-11.jpg'),
-        userName: '@infinity_art',
-        followersText: '1.4k Followers',
-        authorName: 'Infinity Art',
-        desc: 'Complete account of the system, and expound the actual things.',
-        name: 'games',
-        category: 'games',
-        avatars: [
-          {
-            id: 1,
-            img: require('@/images/thumb/avatar.jpg'),
-            path: '/author'
-          },
-          {
-            id: 2,
-            img: require('@/images/thumb/avatar-2.jpg'),
-            path: '/author'
-          },
-          {
-            id: 3,
-            img: require('@/images/thumb/avatar-3.jpg'),
-            path: '/author'
-          },
-          {
-            id: 4,
-            img: require('@/images/thumb/avatar-4.jpg'),
-            path: '/author'
-          },
-          {
-            id: 5,
-            img: require('@/images/thumb/avatar-5.jpg'),
-            path: '/author'
-          },
-        ],
-      },
-      {
-        id: 12,
-        img: require('@/images/thumb/nft19.jpg'),
-        imgLg: require('@/images/thumb/nft-lg12.jpg'),
-        title: 'Venus (Viktoria Veisbrut & SoldArt)',
-        content: 'Limited Edition *digital-only* "CB Galaxy" style Coke Boys LA sneakers wearable in the Decentraland metaverse',
-        author: 'Viktoria',
-        authorLink: '/author',
-        price: 12.00,
-        priceTwo: 1.33,
-        metaText: 'Not for sale',
-        metaTextTwo: '200 editions',
-        metaTextThree: 'Highest bid <span class="text-primary fw-semibold">1.072 ETH</span>',
-        avatar: require('@/images/thumb/avatar-12.jpg'),
-        userName: '@viktoria',
-        followersText: '1.4k Followers',
-        authorName: 'Viktoria',
-        desc: 'Complete account of the system, and expound the actual things.',
-        name: 'games',
-        category: 'games',
-        avatars: [
-          {
-            id: 1,
-            img: require('@/images/thumb/avatar.jpg'),
-            path: '/author'
-          },
-          {
-            id: 2,
-            img: require('@/images/thumb/avatar-2.jpg'),
-            path: '/author'
-          },
-          {
-            id: 3,
-            img: require('@/images/thumb/avatar-3.jpg'),
-            path: '/author'
-          },
-          {
-            id: 4,
-            img: require('@/images/thumb/avatar-4.jpg'),
-            path: '/author'
-          },
-          {
-            id: 5,
-            img: require('@/images/thumb/avatar-5.jpg'),
-            path: '/author'
-          },
-        ],
+        ]
       },
     ],
     onSaleList: [
@@ -1238,197 +776,52 @@ let SectionData = {
     btnText: 'Place a Bid',
     btnTextTwo: 'Share',
     itemDetailTabNav: [
-      {
-        id: 1,
-        isActive: 'active',
-        title: 'Owners',
-        slug: 'owners-tab',
-        bsTarget: '#owners'
-      },
-      {
-        id: 2,
-        title: 'Bids',
-        slug: 'bids-tab',
-        bsTarget: '#bids'
-      },
-      {
-        id: 3,
-        title: 'History',
-        slug: 'history-tab',
-        bsTarget: '#history'
-      },
+      
     ],
     itemDetailOwnerList: [
-      {
-        id: 1,
-        title: 'French Montana',
-        subTitle: '450 editions not for sale',
-        avatar: require('@/images/thumb/avatar-4.jpg'),
-        path: '/author'
-      },
-      {
-        id: 2,
-        title: 'Beejaey',
-        subTitle: '6 editions not for sale',
-        avatar: require('@/images/thumb/avatar-5.jpg'),
-        path: '/author'
-      },
-      {
-        id: 3,
-        title: 'Tom Dracula',
-        subTitle: '24 editions not for sale',
-        avatar: require('@/images/thumb/avatar-6.jpg'),
-        path: '/author'
-      }
+      
     ],
     itemDetailOwnerListTwo: {
       title: 'Owners',
       ownerList: [
-        {
-          id: 1,
-          title: 'French Montana',
-          subTitle: '450 editions not for sale',
-          avatar: require('@/images/thumb/avatar-4.jpg'),
-          path: '/author'
-        },
-        {
-          id: 2,
-          title: 'Beejaey',
-          subTitle: '6 editions not for sale',
-          avatar: require('@/images/thumb/avatar-5.jpg'),
-          path: '/author'
-        },
-        {
-          id: 3,
-          title: 'Tom Dracula',
-          subTitle: '24 editions not for sale',
-          avatar: require('@/images/thumb/avatar-6.jpg'),
-          path: '/author'
-        }
       ]
     },
     itemDetailBidsList: [
-      {
-        id: 1,
-        title: '0.072 ETH by Palliman for 1 edition',
-        date: '21/09/2021',
-        avatar: require('@/images/thumb/avatar.jpg'),
-        path: '/author'
-      },
-      {
-        id: 2,
-        title: '0.072 ETH by KingKhalid for 1 edition',
-        date: '14/08/2021',
-        avatar: require('@/images/thumb/avatar-2.jpg'),
-        path: '/author'
-      },
-      {
-        id: 3,
-        title: '0.072 ETH by Kamran for 1 edition',
-        date: '12/07/2021',
-        avatar: require('@/images/thumb/avatar-3.jpg'),
-        path: '/author'
-      }
+      
     ],
     itemDetailBidsListTwo: {
       title: 'Bids',
       bidsList: [
-        {
-          id: 1,
-          title: '0.072 ETH by Palliman for 1 edition',
-          date: '21/09/2021',
-          avatar: require('@/images/thumb/avatar.jpg'),
-          path: '/author'
-        },
-        {
-          id: 2,
-          title: '0.072 ETH by KingKhalid for 1 edition',
-          date: '14/08/2021',
-          avatar: require('@/images/thumb/avatar-2.jpg'),
-          path: '/author'
-        },
-        {
-          id: 3,
-          title: '0.072 ETH by Kamran for 1 edition',
-          date: '12/07/2021',
-          avatar: require('@/images/thumb/avatar-3.jpg'),
-          path: '/author'
-        }
+        
       ]
     },
     itemDetailHistoryList: [
-      {
-        id: 1,
-        title: 'Listed 1 edition for 0.35 ETH',
-        subTitle: 'by Medicom 21 hours ago',
-        avatar: require('@/images/thumb/avatar-4.jpg'),
-        path: '/author'
-      },
-      {
-        id: 2,
-        title: 'Purchased 1 edition for 0.1 ETH',
-        subTitle: 'by Medicom 21 hours ago',
-        avatar: require('@/images/thumb/avatar-5.jpg'),
-        path: '/author'
-      },
-      {
-        id: 3,
-        title: 'Purchased 1 edition for 0.1 ETH',
-        subTitle: 'by French Montana 23/09/2021',
-        avatar: require('@/images/thumb/avatar-6.jpg'),
-        path: '/author'
-      }
+      
     ],
     itemDetailHistoryListTwo: {
       title: 'History',
       historyList: [
-        {
-          id: 1,
-          title: 'Listed 1 edition for 0.35 ETH',
-          subTitle: 'by Medicom 21 hours ago',
-          avatar: require('@/images/thumb/avatar-4.jpg'),
-          path: '/author'
-        },
-        {
-          id: 2,
-          title: 'Purchased 1 edition for 0.1 ETH',
-          subTitle: 'by Medicom 21 hours ago',
-          avatar: require('@/images/thumb/avatar-5.jpg'),
-          path: '/author'
-        },
-        {
-          id: 3,
-          title: 'Purchased 1 edition for 0.1 ETH',
-          subTitle: 'by French Montana 23/09/2021',
-          avatar: require('@/images/thumb/avatar-6.jpg'),
-          path: '/author'
-        }
+        
       ]
     },
     itemDetailList: [
       {
         id: 1,
-        title: '@nathan_walls',
+        title: '@silviadelchiaro',
         subTitle: 'Creator',
-        avatar: require('@/images/thumb/avatar.jpg'),
-        path: '/author'
+        avatar: require('@/images/client/silvia_profile.jpg'),
+        path: '#'
       },
       {
         id: 2,
-        title: '@kamran_ahmed',
+        title: '@ti_amo_da_vivere',
         subTitle: 'Collection',
-        avatar: require('@/images/thumb/avatar-2.jpg'),
-        path: '/author'
+        avatar: require('@/images/thumb/sfinge.jpg'),
+        path: '/collections/1'
       }
     ],
     itemDetailListTwo: [
-      {
-        title: 'Highest bid by Palliman',
-        titleTwo: 'Palliman',
-        subTitle: '0.072 ETH',
-        avatar: require('@/images/thumb/avatar-3.jpg'),
-        path: '/author'
-      }
+      
     ],
 
   },
@@ -2194,8 +1587,8 @@ let SectionData = {
   ctaDataTwo: {
     title: 'Interested in joining us?',
     content: 'Hop aboard and view our open positions',
-    btnText: 'See open roles',
-    btnLink: 'contact'
+    btnText: 'See our collections',
+    btnLink: 'collections'
   },
   // author data
   authorPublicData: {
@@ -4105,11 +3498,11 @@ let SectionData = {
   },
   // about hero data
   aboutData: {
-    title: 'Building an open digital economy',
-    content: "At EnftyMart, we're excited about a brand new type of digital good called a non-fungible token, or NFT. NFTs have exciting new properties: they’re unique, provably scarce, tradeable, and usable across multiple applications. Just like physical goods, you can do whatever you want with them! You could throw them in the trash, gift them to a friend a",
-    contentTwo: "A core part of our vision is that open protocols like Ethereum and interoperable standards like ERC-721 and ERC-1155 will enable vibrant new economies. We're building tools that allow consumers to trade their assets freely",
-    contentThree: 'We’re proud to be the first and largest marketplace for NFTs.',
-    img: require('@/images/thumb/nft-img-2.png')
+    title: 'Building an open digital Art economy',
+    content: 'Silvia Wow Life was born from the union of art and technology, it is a brand that represents quality and community.',
+    contentTwo: "The Italian artist Silvia Del Chiaro, for years has dedicated her life in mystical and prophetic art, each painting has a story and was born even before the technological era we live in today, We have decided in Silvia Wow Life to take all the his art and his ideas to put them for the benefit of the people within Solana's BlockChain, so that we can use them in any platform that allows, we will not stop only at paintings but we will go on with other types of art such as Sculpture, fashion, etc.",
+    contentThree: 'our purpose and roadmap 1. Start the “I love you to live” collection which collects the first important paintings in its history.  2. Starting a Collection with Bitcoin-based Monetary Fund. 3. Give users the opportunity to sell NFTs with SilviaWowLife Brand within our platform 4. Starting a NFT Collection for the Metaverse (Wearable Clothes) 5. Create an NFT and Coin exchange within our platform, ie the possibility of exchanging NFTs that have a Bitcoin fund with the current value of the coin. 6. Create a DAO for our inversionists, so that together with us they can vote on the decisions that are proposed within the company',
+    img: require('@/images/thumb/sign_silvia.jpg')
   },
   aboutDataTwo: {
     title: 'About the EnftyMart',
@@ -4178,45 +3571,22 @@ let SectionData = {
     ]
   },
   teamData: {
-    title: 'With some of the most forward-thinking angels',
+    title: 'Who we are',
     content: 'Who are just as passionate about this space as we are',
     teamList: [
       {
         id: 1,
-        img: require('@/images/client/a.jpg'),
-        title: 'Jessica brown',
-        meta: 'Co-founder of Scalar'
+        img: require('@/images/client/silvia_profile.jpg'),
+        title: 'silvia Del Chiaro',
+        meta: 'Founder of Silvia WowLife'
       },
       {
         id: 2,
-        img: require('@/images/client/b.jpg'),
-        title: 'Tim Ferris',
-        meta: 'Entrepreneur'
+        img: require('@/images/client/steeven_profile.jpg'),
+        title: 'Steeven Quijije Lacerna',
+        meta: 'Co-founder of Silvia WowLife'
       },
-      {
-        id: 3,
-        img: require('@/images/client/c.jpg'),
-        title: 'Belinda Johnson',
-        meta: 'Attorney of Airbnb'
-      },
-      {
-        id: 4,
-        img: require('@/images/client/d.jpg'),
-        title: 'Justin Kan',
-        meta: 'Co-founder of Twitch'
-      },
-      {
-        id: 5,
-        img: require('@/images/client/e.jpg'),
-        title: 'Alexis Ohanian',
-        meta: 'Co-founder of Reddit'
-      },
-      {
-        id: 6,
-        img: require('@/images/client/f.jpg'),
-        title: 'Balaji Srinivisan',
-        meta: 'Entrepreneur'
-      }
+      
     ]
   },
   // ranking data

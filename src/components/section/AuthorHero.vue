@@ -20,7 +20,7 @@
                                         </div>
                                     </div>
                                 </div><!-- author-hero-conetent -->
-                                <div class="hero-action-wrap d-flex align-items-center my-2">
+                                <div class="hero-action-wrap d-flex align-items-center my-2" v-if="isBtn">
                                     <router-link :to="btnlink" class="btn btn-light">{{ btntext }}</router-link>
                                     <div class="dropdown ms-3" v-if="isDropdown">
                                         <a class="icon-btn icon-btn-s1" href="#" data-bs-toggle="dropdown" id="reportDropdown">
@@ -41,9 +41,9 @@
 
 export default {
   name: 'AuthorHero',
-  props: ['img', 'avatarSize', 'title', 'username', 'isDropdown', 'btntext', 'isCopyInput', 'btnlink', 'coverimg'],
+  props: ['img', 'avatarSize', 'title', 'username', 'isDropdown', 'btntext', 'isCopyInput', 'btnlink', 'coverimg', 'isBtn'],
   setup() {
-     const message = '0x76669f...a0e9ca52';
+     const message = '5m315......jX4';
      const onCopy = (e) => {
         let target = e.trigger.querySelector(".tooltip-text");
         let prevText = target.innerHTML;

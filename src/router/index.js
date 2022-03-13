@@ -42,7 +42,7 @@ const routes = [
   //   component: () => import('../pages/Home-v7.vue')
   // },
   {
-    path: '/product-details-v1-:id',
+    path: '/collections/ti-amo-da-vivere/product-details-:id',
     name: 'ProductDetail',
     component: () => import('../pages/ProductDetail.vue'),
     props: true
@@ -69,10 +69,20 @@ const routes = [
   //   name: 'itemDetailsV2',
   //   component: () => import('../pages/ItemDetails-v2.vue')
   // },
+  // {
+  //   path: '/explore',
+  //   name: 'explore',
+  //   component: () => import('../pages/Explore.vue')
+  // },
   {
-    path: '/explore',
-    name: 'explore',
-    component: () => import('../pages/Explore.vue')
+    path: '/collections',
+    name: 'collections',
+    component: () => import('../pages/Collections.vue')
+  },
+  {
+    path: '/collections/1',
+    name: 'Ti Amo da vivere Collection',
+    component: () => import('../pages/CollectionView.vue')
   },
   // {
   //   path: '/explore-v2',

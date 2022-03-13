@@ -103,11 +103,13 @@
                             <div class="item-detail-btns mt-4">
                                 <ul class="btns-group d-flex">
                                     <li class="flex-grow-1">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#placeBidModal" class="btn btn-dark d-block">{{ SectionData.itemDetailData.btnText }}</a>
+                                        <!--<a href="#" data-bs-toggle="modal" data-bs-target="#placeBidModal" class="btn btn-dark d-block" >{{ SectionData.itemDetailData.btnText }}</a>-->
+                                        <a href="#" class="btn btn-dark d-block" >{{ SectionData.itemDetailData.btnText }}</a>
                                     </li>
                                     <li class="flex-grow-1">
                                         <div class="dropdown">
-                                            <a href="#" class="btn bg-dark-dim d-block" data-bs-toggle="dropdown">{{ SectionData.itemDetailData.btnTextTwo }}</a>
+                                            <!--<a href="#" class="btn bg-dark-dim d-block" data-bs-toggle="dropdown" >{{ SectionData.itemDetailData.btnTextTwo }}</a>-->
+                                            <a href="#"  class="btn bg-dark-dim d-block">{{ SectionData.itemDetailData.btnTextTwo }}</a>
                                             <div class="dropdown-menu card-generic p-2 keep-open w-100 mt-1">
                                                 <router-link :to="icon.path" class="dropdown-item card-generic-item" v-for="(icon, i) in SectionData.socialShareList" :key="i"><em class="ni me-2" :class="icon.btnClass"></em>{{ icon.title }}</router-link>
                                             </div>
