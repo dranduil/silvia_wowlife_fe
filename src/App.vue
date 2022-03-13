@@ -1,10 +1,9 @@
-<script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
 <template>
-  <HelloWorld/>
+  <router-view :key="$route.path"/>
 </template>
 
-<style>
-</style>
+<script>
+export default {
+  name: 'App',
+}
+</script>
