@@ -3,5 +3,5 @@ module.exports = {
     publicPath: '/',
     productionSourceMap: false,
     assetsDir: 'assets',
-    indexPath: 'templates/index.html'
+    // indexPath: 'templates/index.html'
 }
