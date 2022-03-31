@@ -86,6 +86,9 @@ textarea.form-control.form-textarea-s1 {
         color: $headding-color;
         background-color: transparent;
         outline: none;
+        overflow:hidden; 
+        white-space:nowrap; 
+        text-overflow: ellipsis;
         &-s1 {
             max-width: 100%;
             width: 100%;

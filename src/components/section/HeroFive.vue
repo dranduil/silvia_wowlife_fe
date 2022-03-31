@@ -5,22 +5,21 @@
                 <div class="col-lg-6 col-sm-9">
                     <div class="row gx-4">
                         <div class="col-xl-8">
-                            <div class="card card-s2" v-for="product in showItemSingle" :key="product.id">
+                            <div class="card card-s2" v-for="product in showItem.slice(0,1)" :key="product.id">
                                 <div class="card-image">
                                     <img :src="product.imgLg" alt="" class="card-img-top card-img-height">
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title text-truncate">COMING SOON</h5>
+                                    <h5 class="card-title text-truncate">{{ product.title }}</h5>
                                     <div class="card-author d-flex align-items-center">
                                         <span class="me-1 card-author-by">By</span>
-                                        <!-- <router-link :to="product.authorLink" class="author-link">Silvia Del Chiaro</router-link> -->
-                                        <a href="#" class="author-link">Silvia Del Chiaro</a>
+                                        <router-link :to="product.authorLink" class="author-link">{{ product.author }}</router-link>
                                     </div><!-- end card-author -->
                                 </div><!-- end card-body -->
-                                <!-- <router-link
+                                <router-link
                                 class="details"
                                 :to="{
-                                    name: '',
+                                    name: 'ProductDetail',
                                     params: {
                                         id: product.id,
                                         title: product.title,
@@ -35,24 +34,22 @@
                                     }
                                 }"
                             >
-                            </router-link> -->
-                            <a href="#" class="details"></a>
+                            </router-link>
                             </div><!-- end card -->
                         </div>
                         <div class="col-xl-4 d-xl-block d-none">
-                            <div class="card card-s2" v-for="product in showItem" :key="product.id">
+                            <div class="card card-s2" v-for="product in showItem.slice(1,3)" :key="product.id">
                                 <div class="card-image">
                                     <img :src="product.imgLg" alt="" class="card-img-top">
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title text-truncate"> COMING SOON </h5>
+                                    <h5 class="card-title text-truncate">{{ product.title }}</h5>
                                     <div class="card-author d-flex align-items-center">
                                             <span class="me-1 card-author-by">By</span>
-                                        <!-- <router-link :to="product.authorLink" class="author-link">Silvia Del Chiaro</router-link> -->
-                                        <a href="#" class="author-link">Silvia Del Chiaro</a>
+                                        <router-link :to="product.authorLink" class="author-link">{{ product.author }}</router-link>
                                     </div><!-- end card-author -->
                                 </div><!-- end card-body -->
-                                <!-- <router-link
+                                <router-link
                                 class="details"
                                 :to="{
                                     name: 'ProductDetail',
@@ -70,8 +67,7 @@
                                     }
                                 }"
                             >
-                            </router-link> -->
-                            <a href="#" class="details"></a>
+                            </router-link>
                             </div><!-- end card -->
                         </div><!-- end col -->
                     </div><!-- end row -->
@@ -81,11 +77,11 @@
                         <h6 class="hero-meta text-uppercase text-primary mb-3">{{ SectionData.heroDataFour.subTitle }}</h6>
                         <h1 class="hero-title">{{ SectionData.heroDataFour.title }}</h1>
                         <ul class="list-item list-item-icon list-item-hero">
-                            <li><span class="ni ni-check icon icon-circle icon-wbg icon-xs"></span> Created not to lose value over time</li>
-                            <li><span class="ni ni-check icon icon-circle icon-wbg icon-xs"></span> Exchangeable, low transition fees</li>
-                            <li><span class="ni ni-check icon icon-circle icon-wbg icon-xs"></span> Sustained value thanks to a fund based on Bitcoin.</li>
+                            <li><span class="ni ni-check icon icon-circle icon-wbg icon-xs"></span> Create, Buy, Sell and Earn with NFTs</li>
+                            <li><span class="ni ni-check icon icon-circle icon-wbg icon-xs"></span> Faster and cheaper fees under $1</li>
+                            <li><span class="ni ni-check icon icon-circle icon-wbg icon-xs"></span> Stake your earnings and earn more.</li>
                         </ul>
-                        <!-- <ButtonGroup :btns="SectionData.btnDataThree" classname="hero-btns"></ButtonGroup> -->
+                        <ButtonGroup :btns="SectionData.btnDataThree" classname="hero-btns"></ButtonGroup>
                     </div><!-- hero-content -->
                 </div><!-- col-lg-6 -->
             </div>

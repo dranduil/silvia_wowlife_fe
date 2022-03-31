@@ -4,17 +4,14 @@
               <router-link :to="SectionData.headerData.menuList.path" class="menu-link menu-toggle">{{SectionData.headerData.menuList.title}}</router-link>
           </li>
           <li class="menu-item has-sub">
-              <a href="#" class="menu-link menu-toggle">{{ SectionData.headerData.menuList2.title }}</a>
-              <!-- <router-link :to="SectionData.headerData.menuList2.path" class="menu-link menu-toggle">{{ SectionData.headerData.menuList2.title }}</router-link> -->
+              <router-link :to="SectionData.headerData.menuList2.path" class="menu-link menu-toggle">{{ SectionData.headerData.menuList2.title }}</router-link>
           </li>
           <li class="menu-item has-sub">
-              <a href="#" class="menu-link menu-toggle">{{ SectionData.headerData.menuList3.title }}</a>
-              <!-- <router-link :to="SectionData.headerData.menuList3.path" class="menu-link menu-toggle">{{ SectionData.headerData.menuList3.title }}</router-link> -->
+              <router-link :to="SectionData.headerData.menuList3.path" class="menu-link menu-toggle">{{ SectionData.headerData.menuList3.title }}</router-link>
           </li>
-          <li class="menu-item has-sub">
-              <a href="#" class="menu-link menu-toggle">{{ SectionData.headerData.menuList4.title }}</a>
-              <!-- <router-link :to="SectionData.headerData.menuList4.path" class="menu-link menu-toggle">{{ SectionData.headerData.menuList4.title }}</router-link> -->
-          </li>
+          <!--<li class="menu-item has-sub">
+              <router-link :to="SectionData.headerData.menuList4.path" class="menu-link menu-toggle">{{ SectionData.headerData.menuList4.title }}</router-link>
+          </li>-->
      </ul>
 </template>
 
