@@ -6,8 +6,31 @@ import { actions } from '@/store/actions.js'
 
 export default new Vuex.Store({
     state: {
-        token: "a2Ap0bm3TYUIMhFquJsOgpmIoZ1MiuvhGEtaHlfZ",
-        menu: {},
+        menus: {},
+        pages: {},
+        page: {},
+        authors: {},
+        collections: {},
+        networs: {},
+        articles: {},
+        wallets: {},
+        customers: {},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //usless at this moment
         loading_text: {},
         general_settings: {},
         logoData: {},

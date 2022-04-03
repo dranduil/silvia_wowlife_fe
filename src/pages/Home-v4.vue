@@ -41,17 +41,19 @@
 <script>
 // Import component data. You can change the data in the store to reflect in all component
 import SectionData from '@/store/store.js'
-
 import HeroFive from '@/components/section/HeroFive.vue'
+
 export default {
   name: 'Home-v4',
   components: {
     HeroFive
   },
+
   data () {
     return {
       SectionData
     }
-  }
+  },
+
 }
 </script>
