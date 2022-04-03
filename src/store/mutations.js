@@ -35,6 +35,10 @@ export const mutations = {
         state.collections = payload
     },
 
+    UPDATE_COLLECTION: (state, payload) => {
+        state.collection = payload
+    },
+
     SAVED: (state) => {
         state.loadingText = 'Save Settings'
     },

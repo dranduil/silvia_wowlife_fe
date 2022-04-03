@@ -14,8 +14,16 @@ export const getters = {
     GET_PAGE_DATA: (state) => {
         return state.page.data
     },
+    GET_COLLECTIONS_DATA: (state) => {
+        return state.collections.data
+    },
+
+    GET_COLLECTION_DATA: (state) => {
+        return state.collection.data
+    },
 
     GET_PAGES_DATA: (state) => {
-        return state.pages
-    }
+        return state.pages.data
+    },
+
 }

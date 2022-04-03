@@ -41,6 +41,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'AboutUs',
   mounted(){
+    console.log(this)
     this.fetchpage()
   },
   data(){

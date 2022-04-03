@@ -11,6 +11,7 @@ export default new Vuex.Store({
         page: {},
         authors: {},
         collections: {},
+        collection: {},
         networs: {},
         articles: {},
         wallets: {},

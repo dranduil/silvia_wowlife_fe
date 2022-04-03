@@ -5,11 +5,11 @@
         <!-- Header main -->
         <HeaderMain></HeaderMain>
         <!-- hero -->
-        <HeroFour classname="hero-title" :title="SectionData.breadcrumbData.breadcrumbList.title" :lists="SectionData.breadcrumbData.breadcrumbList.navList"></HeroFour>
+        <HeroFour classname="hero-title" title="Collections" :lists="SectionData.breadcrumbData.breadcrumbList.navList"></HeroFour>
     </header>
     <!-- Collections -->
     <!--<Collections></Collections>-->
-    <CollectionList></CollectionList>
+    <CollectionList :collections="collectionsData"></CollectionList>
     <!-- Footer  -->
     <Footer classname="bg-dark on-dark"></Footer>
 </div><!-- end page-wrap -->
@@ -20,6 +20,7 @@
     import SectionData from '@/store/store.js'
     import HeroFour from '@/components/section/HeroFour.vue'
     import CollectionList from '@/components/section/CollectionList.vue'
+    import {  mapGetters } from 'vuex'
     export default {
         name: 'Explore',
         components: {
@@ -29,6 +30,14 @@
         data () {
             return {
             SectionData
+            }
+        },
+        computed:{
+            ...mapGetters([ 'GET_COLLECTIONS_DATA', 'GET_GENERAL_SETTINGS']),
+            collectionsData:{
+                get(){
+                    return this.GET_COLLECTIONS_DATA
+                }
             }
         }
     }

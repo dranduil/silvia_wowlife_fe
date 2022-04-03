@@ -7,10 +7,6 @@
                     </div><!-- end col-lg-6 -->
                     <div class="col-lg-6" :class="isClassTwo" >
                         <div class="about-content-wrap" v-html="content"></div>
-                            <!-- <h2 class="mb-3">{{ title }}</h2> -->
-                            <!-- <p :class="isClass">{{ content }}</p> -->
-                            <!-- <p :class="isClass">{{ content }}</p> -->
-                            <!-- <p v-html="contentfour"></p> -->
                     </div><!-- end col-lg-6 -->
                 </div><!-- end row -->
             </div><!-- end container -->

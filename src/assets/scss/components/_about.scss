@@ -1,11 +1,20 @@
 .about {
-    &-content{
+    &-content {
         &-wrap {
             p {
                 margin-bottom: 16px;
+
                 &:last-child {
                     margin-bottom: 0;
                 }
+
+                strong {
+                    color: #1c2b46;
+                }
+            }
+
+            ol {
+                list-style-type: decimal;
             }
         }
     }

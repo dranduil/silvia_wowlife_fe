@@ -80,7 +80,7 @@ const routes = [
     component: () => import('../pages/Collections.vue')
   },
   {
-    path: '/collections/1',
+    path: '/collections/:id',
     name: 'Ti Amo da vivere Collection',
     component: () => import('../pages/CollectionView.vue')
   },

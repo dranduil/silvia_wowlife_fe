@@ -9,7 +9,7 @@
                             <div class="author-hero-content-wrap d-flex flex-wrap justify-content-between ms-3 flex-grow-1">
                                 <div class="author-hero-content me-3">
                                     <h4 class="hero-author-title mb-1 text-white">{{ title }}</h4>
-                                    <p class="hero-author-username mb-1 text-white">{{ username }}</p>
+                                    <p class="hero-author-username mb-1 text-white">@{{ username }}</p>
                                     <div class="d-flex align-items-center" v-if="isCopyInput">
                                         <input type="text" class="copy-input text-white" v-model="address" id="copy-input" readonly>
                                         <div class="tooltip-s1">
@@ -41,18 +41,24 @@
 
 export default {
   name: 'AuthorHero',
-  props: ['img', 'avatarSize', 'title', 'username', 'isDropdown', 'btntext', 'isCopyInput', 'btnlink', 'coverimg', 'isBtn'],
-  setup() {
-     const address = "5m315FrGdFputmfddBswkSWCUmQRZhMRwVMB4XoEJjX4";
-     const onCopy = (e) => {
+  props: ['img', 'avatarSize', 'title', 'username', 'isDropdown', 'btntext', 'isCopyInput', 'btnlink', 'coverimg', 'isBtn', 'contract', 'authorAddress'],
+  methods:{
+      copy(e){
         let target = e.trigger.querySelector(".tooltip-text");
         let prevText = target.innerHTML;
         target.innerHTML = "Copied";
         setTimeout(function(){
         target.innerHTML = prevText;
         }, 1000)
-    }
-    return { address, onCopy }
-  }
+      }
+  },
+  data(){
+        const onCopy = this.copy
+        const address = this.authorAddress
+        return {
+            onCopy,
+            address
+        }
+  },
 }
 </script>

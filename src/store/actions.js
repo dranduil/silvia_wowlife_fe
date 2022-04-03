@@ -98,6 +98,22 @@ export const actions = {
             })
     },
 
+    FETCH_COLLECTION: ({ commit }, payload) => {
+        let url = `${configuration.url_api}/collections/${payload.id}`
+        const config = {
+            headers: { Authorization: `Bearer ${configuration.token}` }
+        }
+
+        Axios.get(url, config)
+            .then((response) => {
+                const payload = response.data
+                commit('UPDATE_COLLECTION', payload)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    },
+
     FETCH_NETWORKS: ({ commit }, payload) => {
         let url = `${configuration.url_api}/networks`
         const config = {

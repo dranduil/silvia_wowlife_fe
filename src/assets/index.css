@@ -30,7 +30,11 @@
 
 @layer components {
     .about-content-wrap h2 {
-        @apply mb-3
+        @apply mb-3;
+    }
+
+    .about-content-wrap ol {
+        @apply list-decimal;
     }
 }
 
