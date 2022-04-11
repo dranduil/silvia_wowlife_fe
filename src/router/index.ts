@@ -1,6 +1,12 @@
-import { createWebHistory, createRouter } from "vue-router";
-
-const routes = [
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+const routes: Array<RouteRecordRaw> = [
+  // {
+  //   path: '/',
+  //   components: {
+  //     default: Home,
+  //     rightHeader: () => import('../views/partials/OpenMachine.vue')
+  //   }
+  // },
   // {
   //   path: "/",
   //   name: "Home",
@@ -259,10 +265,10 @@ const routes = [
   //   name: 'contact',
   //   component: () => import('../pages/Contact.vue')
   // }
-];
+]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(process.env.BASE_URL),
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
@@ -274,6 +280,6 @@ const router = createRouter({
       }
     }
   }
-});
+})
 
-export default router;
+export default router

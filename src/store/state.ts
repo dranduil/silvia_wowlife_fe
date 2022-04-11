@@ -1,4 +1,4 @@
-
+import { LogoData } from '@/interfaces/store/dataStore'
 export type Collections = {
   id: number;
   title: string;
@@ -20,6 +20,7 @@ export type State = {
     article: Object,
     wallets: Object,
     customers: Object,
+    logoData:Array<LogoData>,
 };
 export const state: State = {
     menus: {},
@@ -33,4 +34,16 @@ export const state: State = {
     article: {},
     wallets: {},
     customers: {},
+    logoData: [
+      {
+        imgClass: 'logo-dark',
+        logoImg: require('@/images/logo-black.png'),
+        path: '/home'
+      },
+      {
+        imgClass: 'logo-light',
+        logoImg: require('@/images/logo-white.png'),
+        path: '/home'
+      }
+    ],
 };
