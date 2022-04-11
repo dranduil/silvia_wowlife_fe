@@ -1,26 +1,44 @@
 import Axios from 'axios'
 import configuration from '@/config/index.js'
+import { ActionContext, ActionTree } from 'vuex'
+import { Mutations, MutationType } from './mutations'
+import { State } from './state'
+import { RequestCreateCustomer, RequestSingleItem } from '@/interfaces/store/request'
+//define enumerators
+export enum ActionTypes {
+  CreateCustomer = 'CREATE_CUSTOMER',
+  FetchPages = 'FETCH_PAGES',
+  FetchPage = 'FETCH_PAGE',
+  FetchCollections = 'FETCH_COLLECTIONS',
+  FetchCollection = 'FETCH_COLLECTION',
+  FetchNetworks = 'FETCH_NETWORKS',
+  FetchAuthors = 'FETCH_AUTHORS',
+  FetchWallets = 'FETCH_WALLETS',
+  FetchCustomers = 'FETCH_CUSTOMERS'
+}
 
-export const actions = {
-    SAVE_SETTINGS: ({ commit }, payload) => {
-        commit('SAVING')
-        let url = configuration.url_api
-        Axios.post(url, {
-            firstname: payload.firstname,
-            lastname: payload.lastname,
-            email: payload.email,
-        })
-            .then((response) => {
-                console.log(response)
-                commit('SAVED')
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-    },
 
-    CREATE_CUSTOMER: ({ commit }, payload) => {
-        commit('SAVING')
+
+//define { commit } Params
+type ActionAugments = Omit<ActionContext<State, State>, 'commit'> & {
+    commit<K extends keyof Mutations>(key: K, payload: Parameters<Mutations[K]>[1]): ReturnType<Mutations[K]>
+}
+
+// define Actions Type
+export type Actions = {
+  [ActionTypes.CreateCustomer](context: ActionAugments, payload:RequestCreateCustomer): void
+  [ActionTypes.FetchPages](context: ActionAugments): void
+  [ActionTypes.FetchPage](context: ActionAugments, payload:RequestSingleItem): void
+  [ActionTypes.FetchCollections](context: ActionAugments): void
+  [ActionTypes.FetchCollection](context: ActionAugments, payload:RequestSingleItem): void
+  [ActionTypes.FetchNetworks](context: ActionAugments): void
+  [ActionTypes.FetchAuthors](context: ActionAugments): void
+  [ActionTypes.FetchWallets](context: ActionAugments): void
+  [ActionTypes.FetchCustomers](context: ActionAugments): void
+
+}
+export const actions: ActionTree<State, State> & Actions = {
+    [ActionTypes.CreateCustomer]({ commit }, payload) {
         let url = configuration.url_api + payload.section
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
@@ -33,26 +51,12 @@ export const actions = {
         Axios.post(url, bodyParameters, config)
             .then((response) => {
                 console.log(response)
-                commit('SAVED')
             })
             .catch((error) => {
                 console.log(error)
             })
     },
-
-    FETCH_SETTINGS: ({ commit }, payload) => {
-        let url = configuration.url_api
-        Axios.get(url)
-            .then((response) => {
-                payload = response.data
-                commit('UPDATE_SETTINGS', payload)
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-    },
-
-    FETCH_PAGES: ({ commit }) => {
+    [ActionTypes.FetchPages] ({ commit }) {
         let url = `${configuration.url_api}/pages`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
@@ -60,14 +64,14 @@ export const actions = {
         Axios.get(url, config)
             .then((response) => {
                 const payload = response.data
-                commit('UPDATE_PAGES', payload)
+                commit(MutationType.UpdatePages, payload)
             })
             .catch((error) => {
                 console.log(error)
             })
     },
 
-    FETCH_PAGE: ({ commit }, payload) => {
+    [ActionTypes.FetchPage] ({ commit }, payload) {
         let url = `${configuration.url_api}/pages/${payload.id}`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
@@ -75,14 +79,14 @@ export const actions = {
         Axios.get(url, config)
             .then((response) => {
                 const payload = response.data
-                commit('UPDATE_PAGE', payload)
+                commit(MutationType.UpdatePage, payload)
             })
             .catch((error) => {
                 console.log(error)
             })
     },
 
-    FETCH_COLLECTIONS: ({ commit }, payload) => {
+    [ActionTypes.FetchCollections] ({ commit }) {
         let url = `${configuration.url_api}/collections`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
@@ -90,15 +94,15 @@ export const actions = {
 
         Axios.get(url, config)
             .then((response) => {
-                payload = response.data
-                commit('UPDATE_COLLECTIONS', payload)
+                const payload = response.data
+                commit(MutationType.UpdateCollections, payload)
             })
             .catch((error) => {
                 console.log(error)
             })
     },
 
-    FETCH_COLLECTION: ({ commit }, payload) => {
+    [ActionTypes.FetchCollection] ({ commit }, payload) {
         let url = `${configuration.url_api}/collections/${payload.id}`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
@@ -107,14 +111,14 @@ export const actions = {
         Axios.get(url, config)
             .then((response) => {
                 const payload = response.data
-                commit('UPDATE_COLLECTION', payload)
+                commit(MutationType.UpdateCollection, payload)
             })
             .catch((error) => {
                 console.log(error)
             })
     },
 
-    FETCH_NETWORKS: ({ commit }, payload) => {
+    [ActionTypes.FetchNetworks] ({ commit }) {
         let url = `${configuration.url_api}/networks`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
@@ -122,15 +126,15 @@ export const actions = {
 
         Axios.get(url, config)
             .then((response) => {
-                payload = response.data
-                commit('UPDATE_NETWORKS', payload)
+                const payload = response.data
+                commit(MutationType.UpdateNetworks, payload)
             })
             .catch((error) => {
                 console.log(error)
             })
     },
 
-    FETCH_AUTHORS: ({ commit }, payload) => {
+    [ActionTypes.FetchAuthors] ({ commit }) {
         let url = `${configuration.url_api}/authors`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
@@ -138,30 +142,30 @@ export const actions = {
 
         Axios.get(url, config)
             .then((response) => {
-                payload = response.data
-                commit('UPDATE_AUTHORS', payload)
+                const payload = response.data
+                commit(MutationType.UpdateAuthors, payload)
             })
             .catch((error) => {
                 console.log(error)
             })
     },
 
-    FETCH_WALLETS: ({ commit }, payload) => {
+    [ActionTypes.FetchWallets] ({ commit }) {
         let url = `${configuration.url_api}/wallets`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
         }
         Axios.get(url, config)
             .then((response) => {
-                payload = response.data
-                commit('UPDATE_WALLETS', payload)
+                const payload = response.data
+                commit(MutationType.UpdateWallets, payload)
             })
             .catch((error) => {
                 console.log(error)
             })
     },
 
-    FETCH_CUSTOMERS: ({ commit }, payload) => {
+    [ActionTypes.FetchCustomers] ({ commit }) {
         let url = `${configuration.url_api}/customers`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
@@ -169,8 +173,8 @@ export const actions = {
 
         Axios.get(url, config)
             .then((response) => {
-                payload = response.data
-                commit('UPDATE_CUSTOMERS', payload)
+                const payload = response.data
+                commit(MutationType.UpdateCustomers, payload)
             })
             .catch((error) => {
                 console.log(error)

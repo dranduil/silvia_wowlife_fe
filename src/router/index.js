@@ -26,6 +26,11 @@ const routes = [
     name: 'Home',
     component: () => import('../pages/Home-v4.vue')
   },
+  {
+    path: '/mint-collection',
+    name: 'Mint Collection',
+    component: () => import('../pages/Mint.vue')
+  },
   // {
   //   path: '/home-v5',
   //   name: 'Home 5',
