@@ -6,7 +6,7 @@
         <HeaderMain></HeaderMain>
       </header>
       <!-- About section  -->
-      <AboutSection class="pt-5 mt-3" :img="SectionData.aboutData.img" isClassThree="col-sm-9 ps-xl-5" isRound="ps-xl-4" isReverse="flex-lg-row-reverse" isClassTwo="pe-lg-5" :title="SectionData.aboutData.title" :content="SectionData.aboutData.content" :contenttwo="SectionData.aboutData.contentTwo" :contentthree="SectionData.aboutData.contentThree"></AboutSection>
+      <AboutSection class="pt-5 mt-3" :img="pageData.cover_photo_url" isClassThree="col-sm-9 ps-xl-5" isRound="ps-xl-4" isReverse="flex-lg-row-reverse" isClassTwo="pe-lg-5" :title="pageData.title" :content="pageData.content"></AboutSection>
       <!-- funFact  -->
       <!--<funFactSection classname="col-xl-2 col-sm-4 col-6" :items="SectionData.funfactData.funfactListTwo"></funFactSection>-->
       <!-- About section  -->
@@ -37,13 +37,37 @@
 <script>
 // Import component data. You can change the data in the store to reflect in all component
 import SectionData from '@/store/store.js'
-
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'AboutUs',
-  data () {
+  mounted(){
+    console.log(this)
+    this.fetchpage()
+  },
+  data(){
     return {
-      SectionData
+      SectionData,
+      // page: this.SectionDatas.pages.data[0]
     }
   },
+  computed: {
+    ...mapGetters([ 'GET_PAGE_DATA', 'GET_GENERAL_SETTINGS']),
+      SectionDatas: {
+              get() {
+                  return this.GET_GENERAL_SETTINGS
+              },
+          },
+      pageData: {
+        get(){
+          return this.GET_PAGE_DATA
+        }
+      }
+  },
+   methods:{
+        ...mapActions([  'FETCH_PAGE', 'FETCH_NETWORKS', 'FETCH_COLLECTIONS', 'FETCH_AUTHORS', 'FETCH_CUSTOMERS', 'FETCH_WALLETS']),
+        fetchpage(){
+          this.FETCH_PAGE({id: "1"})
+        }
+      }
 }
 </script>

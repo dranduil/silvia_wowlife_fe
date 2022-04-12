@@ -9,29 +9,41 @@
     animation: fill 5s ease forwards 2.8s;
 }
 
-#logo path:nth-child(1){
+#logo path:nth-child(1) {
     stroke-dasharray: 2513;
     stroke-dashoffset: 2513;
     animation: line-anim 5s ease forwards;
 
 }
-#logo path:nth-child(2){
+
+#logo path:nth-child(2) {
     stroke-dasharray: 105;
     stroke-dashoffset: 105;
     animation: line-anim 5s ease forwards 1s;
 }
-#logo path:nth-child(3){
+
+#logo path:nth-child(3) {
     stroke-dasharray: 6495;
     stroke-dashoffset: 6495;
     animation: line-anim 5s ease forwards 2s;
 }
 
+@layer components {
+    .about-content-wrap h2 {
+        @apply mb-3;
+    }
+
+    .about-content-wrap ol {
+        @apply list-decimal;
+    }
+}
 
 @keyframes line-anim {
-    to{
+    to {
         stroke-dashoffset: 0;
     }
 }
+
 @keyframes fill {
     from {
         fill: none;
