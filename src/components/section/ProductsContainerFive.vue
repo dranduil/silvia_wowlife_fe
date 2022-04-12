@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import SectionData from '@/store/store.js'
+import SectionData from '@/store/store'
 import ProductsFive from '@/components/section/ProductsFive'
 
 export default {
