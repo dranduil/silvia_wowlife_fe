@@ -1,7 +1,7 @@
 export interface RequestCreateCustomer  {
-    section: String,
-    username: String,
-    address: String
+    section: string,
+    username: string,
+    address: string
 }
 
 export interface RequestSingleItem {

@@ -1,5 +1,5 @@
 // All Section data goes here
-let SectionData = {
+const SectionData = {
   logoData: [
     {
       imgClass: 'logo-dark',

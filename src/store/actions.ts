@@ -39,7 +39,7 @@ export type Actions = {
 }
 export const actions: ActionTree<State, State> & Actions = {
     [ActionTypes.CreateCustomer]({ commit }, payload) {
-        let url = configuration.url_api + payload.section
+        const url = configuration.url_api + payload.section
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
         }
@@ -57,7 +57,7 @@ export const actions: ActionTree<State, State> & Actions = {
             })
     },
     [ActionTypes.FetchPages] ({ commit }) {
-        let url = `${configuration.url_api}/pages`
+        const url = `${configuration.url_api}/pages`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
         };
@@ -72,7 +72,7 @@ export const actions: ActionTree<State, State> & Actions = {
     },
 
     [ActionTypes.FetchPage] ({ commit }, payload) {
-        let url = `${configuration.url_api}/pages/${payload.id}`
+        const url = `${configuration.url_api}/pages/${payload.id}`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
         };
@@ -87,7 +87,7 @@ export const actions: ActionTree<State, State> & Actions = {
     },
 
     [ActionTypes.FetchCollections] ({ commit }) {
-        let url = `${configuration.url_api}/collections`
+        const url = `${configuration.url_api}/collections`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
         }
@@ -103,7 +103,7 @@ export const actions: ActionTree<State, State> & Actions = {
     },
 
     [ActionTypes.FetchCollection] ({ commit }, payload) {
-        let url = `${configuration.url_api}/collections/${payload.id}`
+        const url = `${configuration.url_api}/collections/${payload.id}`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
         }
@@ -119,7 +119,7 @@ export const actions: ActionTree<State, State> & Actions = {
     },
 
     [ActionTypes.FetchNetworks] ({ commit }) {
-        let url = `${configuration.url_api}/networks`
+        const url = `${configuration.url_api}/networks`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
         }
@@ -135,7 +135,7 @@ export const actions: ActionTree<State, State> & Actions = {
     },
 
     [ActionTypes.FetchAuthors] ({ commit }) {
-        let url = `${configuration.url_api}/authors`
+        const url = `${configuration.url_api}/authors`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
         }
@@ -151,7 +151,7 @@ export const actions: ActionTree<State, State> & Actions = {
     },
 
     [ActionTypes.FetchWallets] ({ commit }) {
-        let url = `${configuration.url_api}/wallets`
+        const url = `${configuration.url_api}/wallets`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
         }
@@ -166,7 +166,7 @@ export const actions: ActionTree<State, State> & Actions = {
     },
 
     [ActionTypes.FetchCustomers] ({ commit }) {
-        let url = `${configuration.url_api}/customers`
+        const url = `${configuration.url_api}/customers`
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
         }

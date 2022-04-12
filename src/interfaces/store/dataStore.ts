@@ -3,7 +3,7 @@ export interface ObjectData {
 }
 
 export interface LogoData {
-    imgClass: String,
-    logoImg: String,
-    path: String
+    imgClass: string,
+    logoImg: string,
+    path: string
 }

@@ -10,13 +10,13 @@ const app = createApp(App);
 import "bootstrap"
 
 // vue select
-import vSelect from 'vue-select'
+import { VueSelect } from 'vue-select'
 import "vue-select/dist/vue-select.css";
 
-app.component('v-select', vSelect)
+app.component('v-select', VueSelect)
 
 // clipboard
-import VueClipboard from 'vue3-clipboard'
+import { VueClipboard } from '@soerenmartius/vue3-clipboard'
 app.use(VueClipboard, {
     autoSetContainer: true,
     appendToBody: true,

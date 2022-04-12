@@ -15,13 +15,11 @@
   </div><!-- end page-wrap -->
 </template>
 <script>
-  import logo from "@/components/logo/logo.vue";
-  export default {
+  import logo from "@/components/logo/logo.vue"
+  import {  defineComponent } from 'vue'
+  export default defineComponent({
     components : {
       logo
-    },
-    data() {
-
     }
-  }
+  })
 </script>

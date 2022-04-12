@@ -27,7 +27,6 @@ export type Mutations = {
     [MutationType.UpdateWallets](state: State, payload: ObjectData): void
     [MutationType.UpdateCollections](state: State, payload: ObjectData): void
     [MutationType.UpdateCollection](state: State, payload: ObjectData): void
-    [MutationType.UpdateCollection](state: State, payload: ObjectData): void
     [MutationType.UpdateNetworks](state: State, payload: ObjectData): void
 }
 export const mutations: MutationTree<State> & Mutations = {

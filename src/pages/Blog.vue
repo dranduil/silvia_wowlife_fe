@@ -71,7 +71,7 @@
 
 <script>
 // Import component data. You can change the data in the store to reflect in all component
-import SectionData from '@/store/store.js'
+import SectionData from '@/store/store'
 import HeroFour from '@/components/section/HeroFour.vue'
 import Pagination from 'v-pagination-3';
 
