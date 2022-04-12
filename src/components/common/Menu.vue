@@ -5,33 +5,34 @@
       <MenuList2></MenuList2>
       <!-- header btn -->
       <ul class="menu-btns">
-          <li><ButtonLink :text="SectionData.headerData.btnText" link="/wallet" classname="btn" :class="classname"></ButtonLink></li>
+          <li>
+            <button class="btn btn-dark" @click="showModal" v-if="!wallet">Connect Wallet</button>
+            <p class="btn btn-dark" v-else>{{ shortenAddress(wallet.publicKey.toBase58() || "") }}</p>
+          </li>
           <li>
              <ThemeSwitcher></ThemeSwitcher>
           </li>
       </ul>
   </nav><!-- .header-menu -->
+  <div v-if="visible" @click="hideModal" class="fixed inset-0"></div>
+    <WalletModal :container="'#aside'"></WalletModal>
 </template>
 
-<script>
-// Import component data. You can change the data in the store to reflect in all component
-import SectionData from '@/store/store.js'
+<script setup lang="ts">
+  import MenuList2 from '@/components/common/MenuList2.vue'
+  import { watch } from 'vue'
+  import { useWalletModal, WalletModal } from "@solana/wallet-adapter-vue-ui"
+  import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-vue"
+  import { shortenAddress } from "../../candy-machine";
 
-// @ is an alias to /src
-// import MenuList from '@/components/common/MenuList.vue'
-import MenuList2 from '@/components/common/MenuList2.vue'
+  const { visible, showModal, hideModal } = useWalletModal();
+  const { connect, ready } = useWallet()
 
-export default {
-  name: 'Menu',
-  props: ['classname'],
-  components: {
-    // MenuList,
-    MenuList2
-  },
-  data () {
-    return {
-      SectionData
-    }
-  }
-}
+  watch(ready, () => {
+      if (ready.value) {
+          connect()
+      }
+  }, { immediate: true })
+
+  const wallet = useAnchorWallet();
 </script>

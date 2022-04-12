@@ -86,17 +86,16 @@
   </section><!-- end author-section -->
 </template>
 
-<script>
+<script lang="ts">
 // Import component data. You can change the data in the store to reflect in all component
-import SectionData from '@/store/store.js'
-export default {
-  name: 'ProfileSection',
-  data () {
-    return {
-      SectionData,
-    }
-  },
-}
+    import SectionData from '@/store/store'
+    import { defineComponent} from 'vue'
+    export default defineComponent({
+        name: 'ProfileSection',
+        setup(){
+            return {SectionData}
+        }
+    })
 </script>
 
 <style lang="css" scoped>

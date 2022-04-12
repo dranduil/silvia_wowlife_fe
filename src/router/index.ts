@@ -1,6 +1,12 @@
-import { createWebHistory, createRouter } from "vue-router";
-
-const routes = [
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+const routes: Array<RouteRecordRaw> = [
+  // {
+  //   path: '/',
+  //   components: {
+  //     default: Home,
+  //     rightHeader: () => import('../views/partials/OpenMachine.vue')
+  //   }
+  // },
   // {
   //   path: "/",
   //   name: "Home",
@@ -10,6 +16,11 @@ const routes = [
     path: "/intro",
     name: "Intro",
     component: () => import('@/views/IntroLoad.vue'),
+  },
+  {
+    path: "/mint",
+    name: "Mint",
+    component: () => import('@/pages/Mint.vue'),
   },
   // {
   //   path: '/home-v2',
@@ -25,6 +36,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: () => import('../pages/Home-v4.vue')
+  },
+  {
+    path: '/mint-collection',
+    name: 'Mint Collection',
+    component: () => import('../pages/Mint.vue')
   },
   // {
   //   path: '/home-v5',
@@ -254,10 +270,10 @@ const routes = [
   //   name: 'contact',
   //   component: () => import('../pages/Contact.vue')
   // }
-];
+]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(process.env.BASE_URL),
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
@@ -269,6 +285,6 @@ const router = createRouter({
       }
     }
   }
-});
+})
 
-export default router;
+export default router
