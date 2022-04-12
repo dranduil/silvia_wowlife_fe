@@ -17,6 +17,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "Intro",
     component: () => import('@/views/IntroLoad.vue'),
   },
+  {
+    path: "/mint",
+    name: "Mint",
+    component: () => import('@/pages/Mint.vue'),
+  },
   // {
   //   path: '/home-v2',
   //   name: 'Home 2',
