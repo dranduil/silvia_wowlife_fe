@@ -38,7 +38,7 @@ export type Actions = {
 
 }
 export const actions: ActionTree<State, State> & Actions = {
-    [ActionTypes.CreateCustomer]({ commit }, payload) {
+    [ActionTypes.CreateCustomer]( {commit}, payload ) {
         const url = configuration.url_api + payload.section
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
@@ -107,7 +107,6 @@ export const actions: ActionTree<State, State> & Actions = {
         const config = {
             headers: { Authorization: `Bearer ${configuration.token}` }
         }
-
         Axios.get(url, config)
             .then((response) => {
                 const payload = response.data

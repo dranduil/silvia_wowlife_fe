@@ -6,8 +6,8 @@
       <!-- header btn -->
       <ul class="menu-btns">
           <li>
-            <button class="px-4 py-1" @click="showModal" v-if="!wallet">Connect Wallet</button>
-            <p class="px-4 py-1" v-else>{{ shortenAddress(wallet.publicKey.toBase58() || "") }}</p>
+            <button class="btn btn-dark" @click="showModal" v-if="!wallet">Connect Wallet</button>
+            <p class="btn btn-dark" v-else>{{ shortenAddress(wallet.publicKey.toBase58() || "") }}</p>
           </li>
           <li>
              <ThemeSwitcher></ThemeSwitcher>

@@ -15,30 +15,25 @@
 </div><!-- end page-wrap -->
 </template>
 
-<script>
+<script lang="ts">
     // Import component data. You can change the data in the store to reflect in all component
     import SectionData from '@/store/store'
+    import { computed, defineComponent, onMounted } from 'vue'
     import HeroFour from '@/components/section/HeroFour.vue'
     import CollectionList from '@/components/section/CollectionList.vue'
-    import {  mapGetters } from 'vuex'
-    export default {
-        name: 'Explore',
+    import { useStore } from '@/store'
+    import { ActionTypes } from '@/store/actions'
+    export default defineComponent({
+        name: 'Collections',
         components: {
             HeroFour,
             CollectionList
         },
-        data () {
-            return {
-            SectionData
-            }
-        },
-        computed:{
-            ...mapGetters([ 'GET_COLLECTIONS_DATA', 'GET_GENERAL_SETTINGS']),
-            collectionsData:{
-                get(){
-                    return this.GET_COLLECTIONS_DATA
-                }
-            }
+        setup() {
+            const store = useStore()
+            onMounted(() => store.dispatch(ActionTypes.FetchCollections))
+            const collectionsData = computed(() => store.getters.GetCollectionsData)
+            return {SectionData, collectionsData}
         }
-    }
+    })
 </script>

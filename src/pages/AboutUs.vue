@@ -34,40 +34,20 @@
   </div><!-- end page-wrap -->
 </template>
 
-<script>
+<script lang="ts">
 // Import component data. You can change the data in the store to reflect in all component
 import SectionData from '@/store/store'
-import { mapActions, mapGetters } from 'vuex'
-export default {
+import { computed, defineComponent, onMounted } from 'vue'
+import { useStore } from '@/store'
+import { ActionTypes } from '@/store/actions'
+export default defineComponent({
   name: 'AboutUs',
-  mounted(){
-    console.log(this)
-    this.fetchpage()
-  },
-  data(){
-    return {
-      SectionData,
-      // page: this.SectionDatas.pages.data[0]
-    }
-  },
-  computed: {
-    ...mapGetters([ 'GET_PAGE_DATA', 'GET_GENERAL_SETTINGS']),
-      SectionDatas: {
-              get() {
-                  return this.GET_GENERAL_SETTINGS
-              },
-          },
-      pageData: {
-        get(){
-          return this.GET_PAGE_DATA
-        }
-      }
-  },
-   methods:{
-        ...mapActions([  'FETCH_PAGE', 'FETCH_NETWORKS', 'FETCH_COLLECTIONS', 'FETCH_AUTHORS', 'FETCH_CUSTOMERS', 'FETCH_WALLETS']),
-        fetchpage(){
-          this.FETCH_PAGE({id: "1"})
-        }
-      }
-}
+  setup() {
+    const store = useStore()
+    const SectionDatas = computed(() => store.getters.GetState)
+    const pageData = computed(() => store.getters.GetPageData)
+    onMounted(() => store.dispatch(ActionTypes.FetchPage, {id: 1}))
+    return { SectionDatas, pageData, SectionData }
+  }
+})
 </script>

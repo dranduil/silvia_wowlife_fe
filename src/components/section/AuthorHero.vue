@@ -4,16 +4,16 @@
                 <div class="container">
                     <div class="hero-content py-0 d-flex align-items-center">
                         <div class="avatar flex-shrink-0" :class="avatarSize">
-                                <img :src="img" alt="">
+                                <img :src="collection.author.author_image_url" alt="" v-if="collection.author">
                             </div>
-                            <div class="author-hero-content-wrap d-flex flex-wrap justify-content-between ms-3 flex-grow-1">
+                            <div class="author-hero-content-wrap d-flex flex-wrap justify-content-between ms-3 flex-grow-1" v-if="collection.name">
                                 <div class="author-hero-content me-3">
-                                    <h4 class="hero-author-title mb-1 text-white">{{ title }}</h4>
-                                    <p class="hero-author-username mb-1 text-white">@{{ username }}</p>
-                                    <div class="d-flex align-items-center" v-if="isCopyInput">
-                                        <input type="text" class="copy-input text-white" v-model="address" id="copy-input" readonly>
+                                    <h4 class="hero-author-title mb-1 text-white" >{{ collection.name }}</h4>
+                                    <p class="hero-author-username mb-1 text-white">@{{ collection.author.username }}</p>
+                                    <div class="d-flex align-items-center">
+                                        <input type="text" class="copy-input text-white" v-model="collection.author.address" id="copy-input" readonly>
                                         <div class="tooltip-s1">
-                                            <button v-clipboard:copy="address" v-clipboard:success="onCopy"  class="copy-text text-white ms-2" type="button">
+                                            <button v-clipboard:copy="collection.author.address" v-clipboard:success="onCopy"  class="copy-text text-white ms-2" type="button">
                                                 <span class="tooltip-s1-text tooltip-text">Copy</span>
                                                 <em class="ni ni-copy"></em>
                                             </button>
@@ -37,28 +37,28 @@
     </div><!-- end hero-wrap -->
 </template>
 
-<script>
-
-export default {
-  name: 'AuthorHero',
-  props: ['img', 'avatarSize', 'title', 'username', 'isDropdown', 'btntext', 'isCopyInput', 'btnlink', 'coverimg', 'isBtn', 'contract', 'authorAddress'],
-  methods:{
-      copy(e){
-        let target = e.trigger.querySelector(".tooltip-text");
-        let prevText = target.innerHTML;
-        target.innerHTML = "Copied";
-        setTimeout(function(){
-        target.innerHTML = prevText;
-        }, 1000)
-      }
-  },
-  data(){
-        const onCopy = this.copy
-        const address = this.authorAddress
-        return {
-            onCopy,
-            address
+<script lang="ts">
+    import { useStore } from '@/store'
+    import { computed, defineComponent } from 'vue'
+    import BannerImage from '@/images/banner_collection_tiamodavivere.jpg'
+    export default defineComponent({
+        name: 'AuthorHero',
+        setup(){
+            const onCopy = (e)  => {
+                let target = e.trigger.querySelector(".tooltip-text");
+                let prevText = target.innerHTML;
+                target.innerHTML = "Copied";
+                setTimeout(function(){
+                    target.innerHTML = prevText;
+                }, 1000)
+            }
+            const store = useStore()
+            const collection = computed(() => store.getters.GetCollectionData)
+            const coverimg = BannerImage
+            const btnLink = ""
+            const btntext = ""
+            const avatarSize = "avatar-3"
+            return {collection, onCopy, coverimg, btnLink, btntext, avatarSize}
         }
-  },
-}
+    })
 </script>
