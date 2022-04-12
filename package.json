@@ -25,6 +25,7 @@
     "swiper": "^6.8.4",
     "v-pagination-3": "^0.1.7",
     "vue": "^3.2.24",
+    "vue-3d-model": "^1.4.0",
     "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.0.12",
     "vue-select": "^4.0.0-beta.1",
