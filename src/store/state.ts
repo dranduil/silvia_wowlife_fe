@@ -39,6 +39,11 @@ export const state: State = {
         id: 0,
         name: "",
         author_id: 0,
+        author: {
+          id: 0,
+          username: "",
+          profile_image: ""
+        },
         cover_image_url: ""
       }
     ],

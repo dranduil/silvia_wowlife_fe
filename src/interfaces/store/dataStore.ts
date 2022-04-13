@@ -41,7 +41,8 @@ export interface Collection {
 export interface CollectCollection {
     id:number
     name:string
-    author_id:number
+    author_id:number,
+    author:CollectAuthor,
     cover_image_url:string
 }
 export interface Network {

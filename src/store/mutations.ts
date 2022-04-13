@@ -1,6 +1,6 @@
 import { MutationTree } from 'vuex'
 import { State } from '@/store/state'
-import { Page, Author, Collection, Network, Article, Customer } from '@/interfaces/store/dataStore'
+import { Page, Author, Collection, Network, Article, Customer, CollectCollection } from '@/interfaces/store/dataStore'
 // setting Enumerators
 export enum MutationType {
     UpdatePages = 'UPDATE_PAGES',
@@ -23,7 +23,7 @@ export type Mutations = {
     [MutationType.UpdateArticle](state: State, payload: Article): void
     [MutationType.UpdateCustomers](state: State, payload: Array<Customer>): void
     [MutationType.UpdateAuthors](state: State, payload: Array<Author>): void
-    [MutationType.UpdateCollections](state: State, payload: Array<Collection>): void
+    [MutationType.UpdateCollections](state: State, payload: Array<CollectCollection>): void
     [MutationType.UpdateCollection](state: State, payload: Collection): void
     [MutationType.UpdateNetworks](state: State, payload: Array<Network>): void
 }
