@@ -12,7 +12,7 @@
                             <div class="card-author mb-1 d-flex align-items-center">
                                 <span class="me-1 card-author-by">By</span>
                                 <div class="custom-tooltip-wrap">
-                                    <!--<a href="/author" class="custom-tooltip author-link">{{collection.author.name}}</a>-->
+                                    <!-- <a href="/author" class="custom-tooltip author-link">{{collection.author.name}}</a> -->
                                     <a href="#" class="custom-tooltip author-link">{{collection.author.username}}</a>
                                     <div class="card-generic custom-tooltip-dropdown" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(-81px, -22px);">
                                         <div class="author-action d-flex flex-wrap align-items-center mb-3">
@@ -26,7 +26,7 @@
                                         </div>
                                         <h6 class="author-name mb-1">{{collection.author.username}}</h6>
                                         <p class="author-desc smaller mb-3"></p>
-                                        <!--<div class="follow-wrap mb-3">
+                                        <!-- <div class="follow-wrap mb-3">
                                             <h6 class="mb-1 smaller text-uppercase">Followed by</h6>
                                             <div class="avatar-group">
                                                 <a href="/author" class="" >
@@ -45,16 +45,16 @@
                                                     <img src="" alt="avatar" >
                                                 </a>
                                             </div>
-                                        </div>-->
+                                        </div> -->
                                         <!-- end follow-wrap  -->
-                                        <!--<a href="/author" class="btn btn-sm bg-dark-dim">Follow</a>-->
+                                        <!-- <a href="/author" class="btn btn-sm bg-dark-dim">Follow</a> -->
                                     </div>
                                     <!-- end dropdown-menu -->
                                 </div>
                                 <!-- end custom-tooltip-wrap -->
                             </div>
                             <!-- end card-author -->
-                            <!--<div class="card-price-wrap d-flex align-items-center justify-content-sm-between mb-3">
+                            <!-- <div class="card-price-wrap d-flex align-items-center justify-content-sm-between mb-3">
                                 <div class="me-5 me-sm-2">
                                     <span class="card-price-title">Price</span>
                                     <span class="card-price-number">$14</span>
@@ -63,7 +63,7 @@
                                     <span class="card-price-title">Current bid</span>
                                     <span class="card-price-number">1.32 SOL</span>
                                 </div>
-                            </div>-->
+                            </div> -->
                             <!-- end card-price-wrap -->
                             <a :href="'/collections/'+collection.id" class="details"><span class="btn btn-sm btn-dark">View Collection</span></a>
                         </div>
@@ -83,9 +83,6 @@ export default {
         collections:{
             type: Array
         }
-    },
-    setup(){
-
     }
 }
 </script>

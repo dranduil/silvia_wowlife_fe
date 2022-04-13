@@ -13,7 +13,6 @@ export enum ActionTypes {
   FetchCollection = 'FETCH_COLLECTION',
   FetchNetworks = 'FETCH_NETWORKS',
   FetchAuthors = 'FETCH_AUTHORS',
-  FetchWallets = 'FETCH_WALLETS',
   FetchCustomers = 'FETCH_CUSTOMERS'
 }
 
@@ -33,7 +32,6 @@ export type Actions = {
   [ActionTypes.FetchCollection](context: ActionAugments, payload:RequestSingleItem): void
   [ActionTypes.FetchNetworks](context: ActionAugments): void
   [ActionTypes.FetchAuthors](context: ActionAugments): void
-  [ActionTypes.FetchWallets](context: ActionAugments): void
   [ActionTypes.FetchCustomers](context: ActionAugments): void
 
 }
@@ -64,7 +62,7 @@ export const actions: ActionTree<State, State> & Actions = {
         Axios.get(url, config)
             .then((response) => {
                 const payload = response.data
-                commit(MutationType.UpdatePages, payload)
+                commit(MutationType.UpdatePages, payload.data)
             })
             .catch((error) => {
                 console.log(error)
@@ -79,7 +77,7 @@ export const actions: ActionTree<State, State> & Actions = {
         Axios.get(url, config)
             .then((response) => {
                 const payload = response.data
-                commit(MutationType.UpdatePage, payload)
+                commit(MutationType.UpdatePage, payload.data)
             })
             .catch((error) => {
                 console.log(error)
@@ -95,7 +93,7 @@ export const actions: ActionTree<State, State> & Actions = {
         Axios.get(url, config)
             .then((response) => {
                 const payload = response.data
-                commit(MutationType.UpdateCollections, payload)
+                commit(MutationType.UpdateCollections, payload.data)
             })
             .catch((error) => {
                 console.log(error)
@@ -110,7 +108,7 @@ export const actions: ActionTree<State, State> & Actions = {
         Axios.get(url, config)
             .then((response) => {
                 const payload = response.data
-                commit(MutationType.UpdateCollection, payload)
+                commit(MutationType.UpdateCollection, payload.data)
             })
             .catch((error) => {
                 console.log(error)
@@ -142,22 +140,7 @@ export const actions: ActionTree<State, State> & Actions = {
         Axios.get(url, config)
             .then((response) => {
                 const payload = response.data
-                commit(MutationType.UpdateAuthors, payload)
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-    },
-
-    [ActionTypes.FetchWallets] ({ commit }) {
-        const url = `${configuration.url_api}/wallets`
-        const config = {
-            headers: { Authorization: `Bearer ${configuration.token}` }
-        }
-        Axios.get(url, config)
-            .then((response) => {
-                const payload = response.data
-                commit(MutationType.UpdateWallets, payload)
+                commit(MutationType.UpdateAuthors, payload.data)
             })
             .catch((error) => {
                 console.log(error)
@@ -173,7 +156,7 @@ export const actions: ActionTree<State, State> & Actions = {
         Axios.get(url, config)
             .then((response) => {
                 const payload = response.data
-                commit(MutationType.UpdateCustomers, payload)
+                commit(MutationType.UpdateCustomers, payload.data)
             })
             .catch((error) => {
                 console.log(error)
