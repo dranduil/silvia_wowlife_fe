@@ -44,7 +44,7 @@
     export default defineComponent({
         name: 'AuthorHero',
         setup(){
-            const onCopy = (e)  => {
+            const onCopy = (e:any)  => {
                 let target = e.trigger.querySelector(".tooltip-text");
                 let prevText = target.innerHTML;
                 target.innerHTML = "Copied";

@@ -1,6 +1,6 @@
 import { MutationTree } from 'vuex'
 import { State } from '@/store/state'
-import { ObjectData } from '@/interfaces/store/dataStore'
+import { Page, Author, Collection, Network, Article, Customer } from '@/interfaces/store/dataStore'
 // setting Enumerators
 export enum MutationType {
     UpdatePages = 'UPDATE_PAGES',
@@ -9,7 +9,6 @@ export enum MutationType {
     UpdateArticle = 'UPDATE_ARTICLE',
     UpdateCustomers = 'UPDATE_CUSTOMERS',
     UpdateAuthors = 'UPDATE_AUTHORS',
-    UpdateWallets = 'UPDATE_WALLETS',
     UpdateCollections = 'UPDATE_COLLECTIONS',
     UpdateCollection = 'UPDATE_COLLECTION',
     UpdateNetworks = 'UPDATE_NETWORKS',
@@ -18,56 +17,51 @@ export enum MutationType {
 // set type of mutations
 export type Mutations = {
     // [MutationType.UpdateSettings](state: State, payload: String): void
-    [MutationType.UpdatePages](state: State, payload: ObjectData): void
-    [MutationType.UpdatePage](state: State, payload: ObjectData): void
-    [MutationType.UpdateArticles](state: State, payload: ObjectData): void
-    [MutationType.UpdateArticle](state: State, payload: ObjectData): void
-    [MutationType.UpdateCustomers](state: State, payload: ObjectData): void
-    [MutationType.UpdateAuthors](state: State, payload: ObjectData): void
-    [MutationType.UpdateWallets](state: State, payload: ObjectData): void
-    [MutationType.UpdateCollections](state: State, payload: ObjectData): void
-    [MutationType.UpdateCollection](state: State, payload: ObjectData): void
-    [MutationType.UpdateNetworks](state: State, payload: ObjectData): void
+    [MutationType.UpdatePages](state: State, payload: Array<Page>): void
+    [MutationType.UpdatePage](state: State, payload: Page): void
+    [MutationType.UpdateArticles](state: State, payload: Array<Article>): void
+    [MutationType.UpdateArticle](state: State, payload: Article): void
+    [MutationType.UpdateCustomers](state: State, payload: Array<Customer>): void
+    [MutationType.UpdateAuthors](state: State, payload: Array<Author>): void
+    [MutationType.UpdateCollections](state: State, payload: Array<Collection>): void
+    [MutationType.UpdateCollection](state: State, payload: Collection): void
+    [MutationType.UpdateNetworks](state: State, payload: Array<Network>): void
 }
 export const mutations: MutationTree<State> & Mutations = {
     [MutationType.UpdatePages](state, payload) {
-        state.pages = payload.data
+        state.pages = payload
     },
 
     [MutationType.UpdatePage](state, payload) {
-        state.page = payload.data
+        state.page = payload
     },
 
     [MutationType.UpdateArticles](state, payload) {
-        state.articles = payload.data
+        state.articles = payload
     },
 
     [MutationType.UpdateArticle](state, payload) {
-        state.article = payload.data
+        state.article = payload
     },
 
     [MutationType.UpdateCustomers](state, payload) {
-        state.customers = payload.data
+        state.customers = payload
     },
 
     [MutationType.UpdateAuthors](state, payload) {
-        state.authors = payload.data
-    },
-
-    [MutationType.UpdateWallets](state, payload) {
-        state.wallets = payload.data
+        state.authors = payload
     },
 
     [MutationType.UpdateCollections](state, payload) {
-        state.collections = payload.data
+        state.collections = payload
     },
 
     [MutationType.UpdateCollection](state, payload) {
-        state.collection = payload.data
+        state.collection = payload
     },
 
     [MutationType.UpdateNetworks](state, payload) {
-        state.networs = payload.data
+        state.networs = payload
     },
 
 }

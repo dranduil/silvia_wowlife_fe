@@ -1,39 +1,85 @@
-import { LogoData } from '@/interfaces/store/dataStore'
-export type Collections = {
-  id: number;
-  title: string;
-  description: string;
-  createdBy: string;
-  assignedTo: string;
-  completed: boolean;
-  editing: boolean;
-};
+import { LogoData, CollectPage, Page,  CollectAuthor, Collection, CollectCollection,  Network, Article, Customer } from '@/interfaces/store/dataStore'
+
 export type State = {
-    menus: Object,
-    pages: Object,
-    page: Object,
-    authors: Object,
-    collections: Object,
-    collection: Object,
-    networs: Object,
-    articles: Object,
-    article: Object,
-    wallets: Object,
-    customers: Object,
+    pages: Array<CollectPage>,
+    page: Page,
+    authors: Array<CollectAuthor>,
+    collections: Array<CollectCollection>,
+    collection: Collection,
+    networs: Array<Network>,
+    articles: Array<Article>,
+    article: Article,
+    customers: Array<Customer>,
+
     logoData:Array<LogoData>,
 };
 export const state: State = {
-    menus: {},
-    pages: {},
-    page: {},
-    authors: {},
-    collections: {},
-    collection: {},
-    networs: {},
-    articles: {},
-    article: {},
-    wallets: {},
-    customers: {},
+    pages: [
+      {
+        id: 0,
+        title: "",
+        cover_photo_url: ""
+      }
+    ],
+    page: {
+        id: 0,
+        title: "",
+        content: "",
+        cover_photo_url: ""
+    },
+    authors: [
+      {
+        id: 0,
+        username: "",
+        profile_image: ""
+      }
+    ],
+    collections: [
+      {
+        id: 0,
+        name: "",
+        author_id: 0,
+        cover_image_url: ""
+      }
+    ],
+    collection: {
+        id: 0,
+        name: "",
+        contract: "",
+        author_id: 0,
+        network_id: 0,
+        cover_image_url: ""
+    },
+    networs: [
+      {
+        id: 0,
+        name: "",
+        symbol:"",
+        logo:""
+      }
+    ],
+    articles: [
+      {
+        id: 0,
+        title: "",
+        content: "",
+        cover_photo: ""
+      }
+    ],
+    article: {
+        id: 0,
+        title: "",
+        content: "",
+        cover_photo: ""
+    },
+    customers: [
+      {
+        id: 0,
+        username: "",
+        wallet: "",
+        profile_img: ""
+      }
+    ],
     logoData: [
       {
         imgClass: 'logo-dark',

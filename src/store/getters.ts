@@ -1,21 +1,17 @@
 import { GetterTree } from 'vuex'
 import { State } from './state'
- 
+import { CollectPage, Page, Collection, CollectCollection } from '@/interfaces/store/dataStore'
+
 export type Getters = {
-    GetState(state: State): Object,
-    GetMenuLinks(state: State): Object,
-    GetPageData(state: State): Object,
-    GetCollectionsData(state: State): Object,
-    GetCollectionData(state: State): Object,
-    GetPagesData(state: State): Object
+    GetState(state: State): State,
+    GetPageData(state: State): Page,
+    GetCollectionsData(state: State): Array<CollectCollection>,
+    GetCollectionData(state: State): Collection,
+    GetPagesData(state: State): Array<CollectPage>
 }
  
 export const getters: GetterTree<State, State> & Getters = {
     GetState(state) {
-        return state
-    },
-
-    GetMenuLinks: (state) => {
         return state
     },
     
