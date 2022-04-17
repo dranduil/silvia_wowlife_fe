@@ -8,6 +8,8 @@
 
 <script lang="ts" setup>
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
+import { NetworkConnection } from '@/enum/index'
+import { store } from "@/store";
 import {
   getPhantomWallet,
   getSlopeWallet,
@@ -24,7 +26,11 @@ import {
 import { WalletModalProvider } from "@solana/wallet-adapter-vue-ui";
 
 // const network = process.env.VUE_APP_SOLANA_NETWORK as WalletAdapterNetwork;
-const network = 'devnet' as WalletAdapterNetwork;
+const networkSelected = store.state.RPCNetworks.find( (net) => net.id === NetworkConnection.MAINNET )
+const network = networkSelected.kind  as WalletAdapterNetwork
+const rpcHost = networkSelected?.UrlNetWork
+
+console.log(getPhantomWallet)
 const wallets: Wallet[] = [
   getPhantomWallet(),
   getSlopeWallet(),
@@ -32,5 +38,5 @@ const wallets: Wallet[] = [
   getSolletWallet({ network }),
   getSolletExtensionWallet({ network })
 ];
-console.log(wallets)
+
 </script>

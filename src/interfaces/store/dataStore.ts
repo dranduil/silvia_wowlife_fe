@@ -64,3 +64,8 @@ export interface Customer {
     wallet: string,
     profile_img: string
 }
+export interface RPCNetwork {
+    id:number,
+    kind:String,
+    UrlNetWork:String
+}

@@ -26,11 +26,40 @@ export interface CandyMachine {
 }
 
 interface CandyMachineState {
-  candyMachine: CandyMachine;
-  itemsAvailable: number;
-  itemsRedeemed: number;
-  itemsRemaining: number;
-  goLiveDate: Date,
+  candyMachine: CandyMachine
+  itemsAvailable: number
+  itemsRedeemed: number
+  itemsRemaining: number
+  goLiveDate: anchor.BN
+  treasury: anchor.web3.PublicKey
+  tokenMint: anchor.web3.PublicKey
+  authority: anchor.web3.PublicKey
+  config: anchor.web3.PublicKey
+  endSettings: null | {
+    number: anchor.BN;
+    endSettingType: any;
+  }
+  price: anchor.BN
+  isSoldOut: boolean
+  isActive: boolean
+  isPresale: boolean
+  isWhitelistOnly: boolean
+  gatekeeper: null | {
+    expireOnUse: boolean;
+    gatekeeperNetwork: anchor.web3.PublicKey;
+  }
+  whitelistMintSettings: null | {
+    mode: any;
+    mint: anchor.web3.PublicKey;
+    presale: boolean;
+    discountPrice: null | anchor.BN;
+  }
+  hiddenSettings: null | {
+    name: string;
+    uri: string;
+    hash: Uint8Array;
+  }
+  retainAuthority: boolean
 }
 
 export const awaitTransactionSignatureConfirmation = async (
@@ -160,7 +189,7 @@ export const getCandyMachineState = async (
   connection: anchor.web3.Connection,
 ): Promise<CandyMachineState> => {
   const provider = new anchor.Provider(connection, anchorWallet, {
-    preflightCommitment: "recent",
+    preflightCommitment: "processed",
   });
 
   const idl = await anchor.Program.fetchIdl(
@@ -168,36 +197,44 @@ export const getCandyMachineState = async (
     provider
   );
 
-  const program = new anchor.Program(idl, CANDY_MACHINE_PROGRAM, provider);
+  const program = new anchor.Program(idl!, CANDY_MACHINE_PROGRAM, provider);
   const candyMachine = {
     id: candyMachineId,
     connection,
     program,
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const state: any = await program.account.candyMachine.fetch(candyMachineId);
 
   const itemsAvailable = state.data.itemsAvailable.toNumber();
   const itemsRedeemed = state.itemsRedeemed.toNumber();
   const itemsRemaining = itemsAvailable - itemsRedeemed;
-
-  let goLiveDate = state.data.goLiveDate.toNumber();
-  goLiveDate = new Date(goLiveDate * 1000);
-
-  console.log({
-    itemsAvailable,
-    itemsRedeemed,
-    itemsRemaining,
-    goLiveDate,
-  })
+  const treasury = state.wallet
+  const tokenMint = state.tokenMint
+  const authority = state.authority
+  const config = state.config
+  
 
   return {
     candyMachine,
     itemsAvailable,
     itemsRedeemed,
     itemsRemaining,
-    goLiveDate,
+    goLiveDate: state.data.goLiveDate,
+    treasury,
+    tokenMint,
+    authority,
+    config,
+    endSettings:state.data.endSettings,
+    isSoldOut: itemsRemaining === 0,
+    isActive: false,
+    isPresale: false,
+    isWhitelistOnly: false,
+    whitelistMintSettings: state.data.whitelistMintSettings,
+    hiddenSettings: state.data.hiddenSettings,
+    price: state.data.price,
+    retainAuthority: state.data.retainAuthority,
+    gatekeeper: state.data.gatekeeper,
   };
 }
 

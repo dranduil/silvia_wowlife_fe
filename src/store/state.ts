@@ -1,4 +1,4 @@
-import { LogoData, CollectPage, Page,  CollectAuthor, Collection, CollectCollection,  Network, Article, Customer } from '@/interfaces/store/dataStore'
+import { LogoData, CollectPage, Page,  CollectAuthor, Collection, CollectCollection,  Network, Article, Customer, RPCNetwork } from '@/interfaces/store/dataStore'
 
 export type State = {
     pages: Array<CollectPage>,
@@ -10,7 +10,7 @@ export type State = {
     articles: Array<Article>,
     article: Article,
     customers: Array<Customer>,
-
+    RPCNetworks:Array<RPCNetwork>
     logoData:Array<LogoData>,
 };
 export const state: State = {
@@ -97,4 +97,21 @@ export const state: State = {
         path: '/home'
       }
     ],
+    RPCNetworks:[
+      {
+        id:1,
+        kind:"devnet",
+        UrlNetWork:"https://api.devnet.solana.com",
+      },
+      {
+        id:2,
+        kind:"testnet",
+        UrlNetWork:"https://api.testnet.solana.com",
+      },
+      {
+        id:3,
+        kind:"mainnet-beta",
+        UrlNetWork:"https://api.mainnet-beta.solana.com",
+      }
+    ]
 };
