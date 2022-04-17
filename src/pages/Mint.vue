@@ -50,14 +50,10 @@
     } from "../candy-machine";
 
     const candyMachineId = new anchor.web3.PublicKey(
-        process.env.VUE_APP_CANDY_MACHINE_ID || '68E14mDV9vsz4YaWiT3sQtdhB8f6YigCAUcdrsi6mTjh'
+        '68E14mDV9vsz4YaWiT3sQtdhB8f6YigCAUcdrsi6mTjh'
     );
-    
-    const NetWorkConnectionSelected = store.state.RPCNetworks.find( (network) => network.id === NetworkConnection.MAINNET )
 
-    const rpcHost = NetWorkConnectionSelected?.UrlNetWork;
-
-    const connection = new anchor.web3.Connection(rpcHost || '');
+    const connection = new anchor.web3.Connection('https://solana-api.projectserum.com');
 
     // const startDateSeed = parseInt(process.env.VUE_APP_CANDY_START_DATE || '0', 10);
     const startDateSeed = parseInt('1649228789811', 10);

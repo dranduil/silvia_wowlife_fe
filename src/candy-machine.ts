@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import * as anchor from "@project-serum/anchor";
-
+import * as anchor from "@project-serum/anchor"
 import {
   MintLayout,
   TOKEN_PROGRAM_ID,
@@ -188,24 +187,23 @@ export const getCandyMachineState = async (
   candyMachineId: anchor.web3.PublicKey,
   connection: anchor.web3.Connection,
 ): Promise<CandyMachineState> => {
+
   const provider = new anchor.Provider(connection, anchorWallet, {
-    preflightCommitment: "processed",
+    preflightCommitment: 'processed',
   });
 
-  const idl = await anchor.Program.fetchIdl(
-    CANDY_MACHINE_PROGRAM,
-    provider
-  );
+  const idl = await anchor.Program.fetchIdl(CANDY_MACHINE_PROGRAM, provider)
 
-  const program = new anchor.Program(idl!, CANDY_MACHINE_PROGRAM, provider);
+  const program = new anchor.Program(idl!, CANDY_MACHINE_PROGRAM, provider)
+
+  const state: any = await program.account.candyMachine.fetch(candyMachineId);
+  console.log(state)
+  
   const candyMachine = {
     id: candyMachineId,
     connection,
     program,
   }
-
-  const state: any = await program.account.candyMachine.fetch(candyMachineId);
-
   const itemsAvailable = state.data.itemsAvailable.toNumber();
   const itemsRedeemed = state.itemsRedeemed.toNumber();
   const itemsRemaining = itemsAvailable - itemsRedeemed;
