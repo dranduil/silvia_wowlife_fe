@@ -66,8 +66,8 @@ export interface Customer {
 }
 export interface RPCNetwork {
     id:number,
-    kind:String,
-    UrlNetWork:String
+    kind:string,
+    UrlNetWork:string
 }
 
 export interface CollectionItemDetail {

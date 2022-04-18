@@ -9,25 +9,31 @@
             <WalletModalProvider>
             </WalletModalProvider >
         </WalletProvider>
-        <div class="w-1/2 max-w-sm p-4  rounded-md bg-opacity-80">
-            <h3 class="text-base font-bold">Candy Machine Mint</h3>
-            <div class="mt-4" v-if="wallet">
-                <p>Balance: {{ (balance || 0).toLocaleString() }} SOL</p>
-                <p>Total Available: {{ itemsAvailable }}</p>
-                <p>Redeemed: {{ itemsRedeemed }}</p>
-                <p>Remaining: {{ itemsRemaining }}</p>
-                <p>Price: {{ formatNumber.asNumber(price) }}</p>
-                <button :disabled="isSoldOut || isMinting || !isActive" class="w-full px-2 py-1 mt-4 text-center bg-blue-500 rounded-md btn" @click="mint">
-                    <span v-if="isSoldOut">Sold Out</span>
-                    <span v-else-if="isMinting">Minting...</span>
-                    <span v-else-if="isActive">Mint</span>
-                    <VueCountdown v-else :time="getCountdownDate(isActive,endSettings,goLiveDate,isPresale)"  v-slot="{ days, hours, minutes, seconds }">
-                        Available in ：{{ days }}d {{ hours }}h {{ minutes }}m {{ seconds }}s
-                    </VueCountdown>
-                </button>
+        <section class="about-section pt-5 mt-3">
+            <div class="container">
+                <div class="row align-items-center flex flex-lg-row-reverse">
+                    <h3 class="text-base font-bold" style="text-align: center;">Mint of {{collection.name}}</h3>
+                    <div class="mt-4" v-if="wallet">
+                        <p>Balance: {{ (balance || 0).toLocaleString() }} SOL</p>
+                        <p>Total Available: {{ itemsAvailable }}</p>
+                        <p>Redeemed: {{ itemsRedeemed }}</p>
+                        <p>Remaining: {{ itemsRemaining }}</p>
+                        <p>Price: {{ formatNumber.asNumber(price) }}</p>
+                        <span>{{getCountdownDate(isActive,endSettings,goLiveDate,isPresale)}}</span>
+                        <button :disabled="isSoldOut || isMinting || !isActive" class="w-full px-2 py-1 mt-4 text-center bg-blue-500 rounded-md btn" @click="mint">
+                            <span v-if="isSoldOut">Sold Out</span>
+                            <span v-else-if="isMinting">Minting...</span>
+                            <span v-else-if="isActive">Mint</span>
+                            
+                            <!-- <VueCountdown v-else :time="getCountdownDate(isActive,endSettings,goLiveDate,isPresale)"  v-slot="{ days, hours, minutes, seconds }">
+                                Available in ：{{ days }}d {{ hours }}h {{ minutes }}m {{ seconds }}s
+                            </VueCountdown> -->
+                        </button>
+                    </div>
+                    <div class="px-2 py-1 mt-4 bg-red-500 rounded-md" v-else>Please connect your wallet</div>
+                </div>
             </div>
-            <div class="px-2 py-1 mt-4 bg-red-500 rounded-md" v-else>Please connect your wallet</div>
-        </div>
+        </section>
         <!-- Footer  -->
         <Footer classname="bg-dark on-dark"></Footer>
     </div><!-- end page-wrap -->
@@ -37,23 +43,25 @@
     import { ref, watch } from 'vue'
     import * as anchor from "@project-serum/anchor";
     import VueCountdown from '@chenfengyuan/vue-countdown';
-    import { store } from '@/store'
-    import { NetworkConnection } from '@/enum/index'
+    import { useStore } from '@/store'
+    import { ActionTypes } from '@/store/actions';
     import { LAMPORTS_PER_SOL } from "@solana/web3.js";
     import { useAnchorWallet } from "@solana/wallet-adapter-vue";
-    import { AlertState, toDate, formatNumber, getAtaForMint } from '@/utils';
+    import { toDate, formatNumber } from '@/utils';
     import {
         CandyMachine,
         awaitTransactionSignatureConfirmation,
         getCandyMachineState,
         mintOneToken,
     } from "../candy-machine";
-
+    const store = useStore()
     const candyMachineId = new anchor.web3.PublicKey(
-        '68E14mDV9vsz4YaWiT3sQtdhB8f6YigCAUcdrsi6mTjh'
-    );
-
-    const connection = new anchor.web3.Connection('https://solana-api.projectserum.com');
+      '68E14mDV9vsz4YaWiT3sQtdhB8f6YigCAUcdrsi6mTjh'
+    )
+    const rpcHost = process.env.VUE_APP_SOLANA_RPC_HOST!
+    const connection = new anchor.web3.Connection(
+        rpcHost ? rpcHost : anchor.web3.clusterApiUrl('devnet'),
+    )
 
     // const startDateSeed = parseInt(process.env.VUE_APP_CANDY_START_DATE || '0', 10);
     const startDateSeed = parseInt('1649228789811', 10);
@@ -79,42 +87,34 @@
     const isPresale = ref<boolean>()
     const discountPrice = ref<anchor.BN>()
 
+    store.dispatch(ActionTypes.FetchCollection, {id:1})
+    const collection = store.getters.GetCollectionData
+
     const refreshCandyMachineState = async () => {
         if (!wallet.value) return;
 
         let {
-            candyMachine: candyMachineBis,
-            goLiveDate: goLiveDateBis,
-            itemsAvailable: itemsAvailableBis,
-            itemsRemaining: itemsRemainingBis,
-            itemsRedeemed: itemsRedeemedBis,
-            treasury: treasuryBis,
-            config: configBis,
-            price: priceBis,
-            isActive:isActiveBis,
-            endSettings:endSettingsBis,
-            whitelistMintSettings:whitelistMintSettingsBis,
-            isWhitelistOnly:isWhitelistOnlyBis,
-            isPresale: isPresaleBis,
-            isSoldOut:isSoldOutBis
+            id:idBis,
+            program:programBis,
+            state:stateBis,
+            config:configBis
         } = await getCandyMachineState(
             wallet.value as anchor.Wallet,
             candyMachineId,
             connection
         );
 
-        itemsAvailable.value = itemsAvailableBis
-        itemsRemaining.value = itemsRemainingBis
-        itemsRedeemed.value = itemsRedeemedBis
+        itemsAvailable.value = stateBis.itemsAvailable
+        itemsRemaining.value = stateBis.itemsRemaining
+        itemsRedeemed.value = stateBis.itemsRedeemed
 
-
-        let active = goLiveDateBis?.toNumber() < new Date().getTime() / 1000;
+        let active = stateBis.goLiveDate?.toNumber() < new Date().getTime() / 1000;
         let presale = false
         //whitelist mint ?
-        if(whitelistMintSettingsBis)
+        if(stateBis.whitelistMintSettings)
         {
-            if(whitelistMintSettingsBis.presale &&
-                (!goLiveDateBis || goLiveDateBis.toNumber() > new Date().getTime() / 1000 )
+            if(stateBis.whitelistMintSettings.presale &&
+                (!stateBis.goLiveDate || stateBis.goLiveDate.toNumber() > new Date().getTime() / 1000 )
             )
             {
                 presale = true
@@ -122,14 +122,14 @@
         }
 
         //is there discount ?
-        if(whitelistMintSettingsBis?.discountPrice)
+        if(stateBis.whitelistMintSettings?.discountPrice)
         {
-            discountPrice.value = whitelistMintSettingsBis.discountPrice
+            discountPrice.value = stateBis.whitelistMintSettings.discountPrice
         } else {
             discountPrice.value = undefined
-            if(!whitelistMintSettingsBis?.presale)
+            if(!stateBis.whitelistMintSettings?.presale)
             {
-                isWhitelistOnlyBis = true
+                stateBis.isWhitelistOnly = true
             }
         }
 
@@ -141,50 +141,50 @@
 
 
         // datetime to stop the mint?
-        if(endSettingsBis?.endSettingType.date)
+        if(stateBis.endSettings?.endSettingType.date)
         {
-            endDate.value = toDate(endSettingsBis.number)
-            if(endSettingsBis.toNumber() < new Date().getTime() / 1000)
+            endDate.value = toDate(stateBis.endSettings.number)
+            if(stateBis.endSettings.number.toNumber() < new Date().getTime() / 1000)
             {
                 active = false;
             }
         }
         // amount to stop the mint?
-        if(endSettingsBis?.endSettingType.amount){
-            let limit = Math.min(endSettingsBis.number.toNumber(), itemsAvailableBis)
-            if(itemsRedeemedBis < limit)
+        if(stateBis.endSettings?.endSettingType.amount){
+            let limit = Math.min(stateBis.endSettings.number.toNumber(), stateBis.itemsAvailable)
+            if(stateBis.itemsRedeemed < limit)
             {
-                itemsRemaining.value = limit - itemsRedeemedBis
+                itemsRemaining.value = limit - stateBis.itemsRedeemed
             }
             else
             {
                 itemsRemaining.value = 0
-                isSoldOutBis = true;
+                stateBis.isSoldOut = true;
             }
         }
         else
         {
-            itemsRemaining.value = itemsRemainingBis
+            itemsRemaining.value = stateBis.itemsRemaining
         }
 
 
-        if(isSoldOutBis)
+        if(stateBis.isSoldOut)
         {
             active = false
         }
-        isActiveBis = active
-        isPresaleBis = presale
+        stateBis.isActive = active
+        stateBis.isPresale = presale
         //assign values
-        console.log(priceBis)
-        startDate.value = goLiveDateBis
-        candyMachine.value = candyMachineBis
-        treasury.value = treasuryBis
+        console.log(stateBis.price)
+        startDate.value = stateBis.goLiveDate
+        candyMachine.value = {id:idBis,program:programBis, state:stateBis, config:configBis}
+        treasury.value = stateBis.treasury
         config.value = configBis
-        isActive.value = isActiveBis
-        price.value = priceBis
-        goLiveDate.value = goLiveDateBis
-        endSettings.value = endSettingsBis
-        isPresale.value = isPresaleBis
+        isActive.value = stateBis.isActive
+        price.value = stateBis.price
+        goLiveDate.value = stateBis.goLiveDate
+        endSettings.value = stateBis.endSettings
+        isPresale.value = stateBis.isPresale
 
 
     };
@@ -275,7 +275,6 @@
         ) {
             return toDate(endSettings.number);
         }
-
         return toDate(
             goLiveDate
             ? goLiveDate
