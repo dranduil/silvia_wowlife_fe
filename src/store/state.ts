@@ -141,7 +141,7 @@ export const state: State = {
         description: "Gabriel - 2015 - Ho visto che nel deserto c'era un fiore, questo fiore ha convinto il deserto a ridare i suoi semi ed il deserto è diventato un campo di mille colori | cit. @silviadelchiaro",
         network_id: 1,
         collection_id: 1,
-        bg_url: "" /**require('@/images/collection/tav/')**/
+        bg_url: require('@/images/collection/tav/bg-gabriel.png')
       },
       {
         id: 4,
@@ -150,7 +150,7 @@ export const state: State = {
         description: "Una parte di Lei - 2016 - Conoscere una parte di lei non è tutto | cit. @silviadelchiaro",
         network_id: 1,
         collection_id: 1,
-        bg_url: require('@/images/collection/tav/bg-face.png')
+        bg_url: require('@/images/collection/tav/bg-una-parte-dilei.png')
       },
       {
         id: 5,
@@ -159,7 +159,7 @@ export const state: State = {
         description: "Due solitudine - 2020 - un occhio può vedere due cuori solitudine | cit. @silviadelchiaro",
         network_id: 1,
         collection_id: 1,
-        bg_url: "" /*require('@/images/collection/tav/')*/
+        bg_url: require('@/images/collection/tav/bg-duesolitudine.png')
       }
     ]
 };
