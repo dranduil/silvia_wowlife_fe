@@ -69,3 +69,13 @@ export interface RPCNetwork {
     kind:String,
     UrlNetWork:String
 }
+
+export interface CollectionItemDetail {
+    id: number,
+    title: string,
+    author_id: number,
+    description: string,
+    network_id: number,
+    collection_id: number,
+    bg_url: string
+}

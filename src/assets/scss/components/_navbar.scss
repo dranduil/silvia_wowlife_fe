@@ -12,8 +12,9 @@
         left: 0;
         right: 0;
         z-index: 1000;
-        background: $white;
+        background: $white-rgb;
         transition: all 0.3s ease;
+        backdrop-filter: saturate(180%) blur(20px);
         &.is-transparent{
             background: transparent;
         }
@@ -22,7 +23,8 @@
             padding: 0;
             box-shadow: 0 1px 3px 2px rgba($dark, 0.08);
             width: 100%;
-            background: $white;
+            background: $white-rgb;
+            backdrop-filter: saturate(180%) blur(20px);
         }
     }
     &-logo {

@@ -63,6 +63,12 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../pages/ProductDetail.vue'),
     props: true
   },
+  {
+    path: '/collections/view-detail/:id',
+    name: 'View Detail Collection',
+    component: () => import('@/pages/ViewCollectionDetail.vue'),
+    props: true
+  },
   // {
   //   path: '/product-details-v2-:id',
   //   name: 'ProductDetail_v2',
