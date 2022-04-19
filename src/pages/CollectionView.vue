@@ -13,10 +13,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6 collection-mint">
-                        <ButtonLink link="/mint" text=" Mint collection Now " class="btn btn-dark"></ButtonLink>
+                        <div>
+                            <ButtonLink link="/mint" text=" Mint collection Now " class="btn btn-dark"></ButtonLink>
+                        </div>
                     </div>
                     <div class="col-xl-6 collection-preview">
-                        <ButtonLink link="/collections/view-detail/1" text=" View Detail of Collection " class="btn btn-dark"></ButtonLink>
+                        <div>
+                            <ButtonLink link="/collections/view-detail/1" text=" View Detail of Collection " class="btn btn-dark"></ButtonLink>
+                        </div>
                     </div>
                 </div>
             </div>

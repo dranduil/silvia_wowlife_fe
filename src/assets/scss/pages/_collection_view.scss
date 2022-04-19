@@ -4,21 +4,25 @@
         padding: 1em;
     }
     .collection-mint{
+        div {
             padding: 1em;
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-content: center;
-            background-color: #000;
+            background-color: #d2d2d2;
             border-radius: 5px;
+        }
     }
     .collection-preview {
+        div {
             padding: 1em;
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-content: center;
-            background-color: #000;
+            background-color: #d2d2d2;
             border-radius: 5px;
+        }
     }
 }
