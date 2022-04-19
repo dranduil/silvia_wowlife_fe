@@ -2,21 +2,9 @@
 <section class="author-section section-space">
       <div class="container">
           <div class="row">
-              <div class="col-xl-3">
-                  <AuthorSidebar
-                  content=""
-                  followingnum=""
-                  followingtext=""
-                  followernum=""
-                  followertext=""
-                  avatars=""
-                  links=""
-                  datetext=""
-                  ></AuthorSidebar>
-              </div><!-- end col -->
-              <div class="col-xl-9 ps-xl-4">
+              <div class="col-xl-12 ps-xl-4">
                   <div class="author-items-wrap">
-                      <h3>{{ SectionData.profileData.title }}</h3>
+                      <h3>All Collection</h3>
                       <div class="gap-2x"></div><!-- end gap -->
                       <div class="row g-gs">
                           <div class="col-md-4" v-for="product in SectionData.productData.products" :key="product.id">
@@ -29,19 +17,10 @@
                                   <div class="card-author mb-1 d-flex align-items-center">
                                       <span class="me-1 card-author-by">By</span>
                                       <div class="custom-tooltip-wrap">
-                                          <router-link :to="product.authorLink" class="custom-tooltip author-link">{{ product.author }}</router-link>
+                                          <!-- <router-link :to="product.authorLink" class="custom-tooltip author-link">{{ product.author }}</router-link> -->
+                                          <span  class="custom-tooltip author-link">{{ product.author }}</span>
                                       </div><!-- end custom-tooltip-wrap -->
                                   </div><!-- end card-author -->
-                                  <div class="card-price-wrap d-flex align-items-center justify-content-between mb-3">
-                                      <div class="me-2">
-                                          <span class="card-price-title">Price</span>
-                                          <span class="card-price-number">&dollar;{{ product.price }}</span>
-                                      </div>
-                                      <div class="text-sm-end">
-                                          <span class="card-price-title">Current bid</span>
-                                          <span class="card-price-number">{{ product.priceTwo }} SOL</span>
-                                      </div>
-                                  </div><!-- end card-price-wrap -->
                               </div><!-- end card-body -->
                               <router-link
                                   class="details"
@@ -66,23 +45,6 @@
               </div><!-- end col-lg-8 -->
           </div><!-- end row -->
       </div><!-- .container -->
-      <!-- Modal -->
-      <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                  <div class="modal-body text-center">
-                      <img :src="SectionData.deleteModal.img" alt="" class="mb-3">
-                      <h4 class="modal-tilte mb-2">{{ SectionData.deleteModal.title }}</h4>
-                      <p class="modal-text">{{ SectionData.deleteModal.content}}</p>
-                  </div><!-- end modal-body -->
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-sm" data-bs-dismiss="modal">{{ SectionData.deleteModal.btnText }}</button>
-                      <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">{{ SectionData.deleteModal.btnTextTwo }}</button>
-                  </div>
-              </div><!-- end modal-content -->
-          </div><!-- end modal-dialog -->
-      </div><!-- end modal-->
-      <!-- Modal -->
   </section><!-- end author-section -->
 </template>
 
@@ -90,10 +52,13 @@
 // Import component data. You can change the data in the store to reflect in all component
     import SectionData from '@/store/store'
     import { defineComponent} from 'vue'
+    import { useStore } from '@/store/index'
     export default defineComponent({
         name: 'ProfileSection',
         setup(){
-            return {SectionData}
+            const store = useStore()
+            const collection = store.getters.GetCollectionData
+            return {SectionData, collection}
         }
     })
 </script>

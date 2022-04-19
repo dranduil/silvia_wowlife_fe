@@ -64,3 +64,18 @@ export interface Customer {
     wallet: string,
     profile_img: string
 }
+export interface RPCNetwork {
+    id:number,
+    kind:string,
+    UrlNetWork:string
+}
+
+export interface CollectionItemDetail {
+    id: number,
+    title: string,
+    author_id: number,
+    description: string,
+    network_id: number,
+    collection_id: number,
+    bg_url: string
+}

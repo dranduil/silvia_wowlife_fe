@@ -9,25 +9,31 @@
             <WalletModalProvider>
             </WalletModalProvider >
         </WalletProvider>
-        <div class="w-1/2 max-w-sm p-4 bg-black rounded-md bg-opacity-80">
-            <h3 class="text-base font-bold">Candy Machine Mint</h3>
-            <div class="mt-4" v-if="wallet">
-                <p>Balance: {{ (balance || 0).toLocaleString() }} SOL</p>
-                <p>Total Available: {{ itemsAvailable }}</p>
-                <p>Redeemed: {{ itemsRedeemed }}</p>
-                <p>Remaining: {{ itemsRemaining }}</p>
-
-                <button :disabled="isSoldOut || isMinting || !isActive" class="w-full px-2 py-1 mt-4 text-center bg-blue-500 rounded-md btn" @click="mint">
-                    <span v-if="isSoldOut">Sold Out</span>
-                    <span v-else-if="isMinting">Minting...</span>
-                    <span v-else-if="isActive">Mint</span>
-                    <VueCountdown v-else :time="Math.max(0, startDate.getTime() - Date.now())" @end="() => isActive = true" v-slot="{ days, hours, minutes, seconds }">
-                        Available in ：{{ days }}d {{ hours }}h {{ minutes }}m {{ seconds }}s
-                    </VueCountdown>
-                </button>
+        <section class="about-section pt-5 mt-3">
+            <div class="container">
+                <div class="row align-items-center flex flex-lg-row-reverse">
+                    <h3 class="text-base font-bold" style="text-align: center;">Mint of {{collection.name}}</h3>
+                    <div class="mt-4" v-if="wallet">
+                        <p>Balance: {{ (balance || 0).toLocaleString() }} SOL</p>
+                        <p>Total Available: {{ itemsAvailable }}</p>
+                        <p>Redeemed: {{ itemsRedeemed }}</p>
+                        <p>Remaining: {{ itemsRemaining }}</p>
+                        <p>Price: {{ formatNumber.asNumber(price) }}</p>
+                        <span>{{getCountdownDate(isActive,endSettings,goLiveDate,isPresale)}}</span>
+                        <button :disabled="isSoldOut || isMinting || !isActive" class="w-full px-2 py-1 mt-4 text-center bg-blue-500 rounded-md btn" @click="mint">
+                            <span v-if="isSoldOut">Sold Out</span>
+                            <span v-else-if="isMinting">Minting...</span>
+                            <span v-else-if="isActive">Mint</span>
+                            
+                            <!-- <VueCountdown v-else :time="getCountdownDate(isActive,endSettings,goLiveDate,isPresale)"  v-slot="{ days, hours, minutes, seconds }">
+                                Available in ：{{ days }}d {{ hours }}h {{ minutes }}m {{ seconds }}s
+                            </VueCountdown> -->
+                        </button>
+                    </div>
+                    <div class="px-2 py-1 mt-4 bg-red-500 rounded-md" v-else>Please connect your wallet</div>
+                </div>
             </div>
-            <div class="px-2 py-1 mt-4 bg-red-500 rounded-md" v-else>Please connect your wallet</div>
-        </div>
+        </section>
         <!-- Footer  -->
         <Footer classname="bg-dark on-dark"></Footer>
     </div><!-- end page-wrap -->
@@ -37,38 +43,32 @@
     import { ref, watch } from 'vue'
     import * as anchor from "@project-serum/anchor";
     import VueCountdown from '@chenfengyuan/vue-countdown';
-
+    import { useStore } from '@/store'
+    import { ActionTypes } from '@/store/actions';
     import { LAMPORTS_PER_SOL } from "@solana/web3.js";
     import { useAnchorWallet } from "@solana/wallet-adapter-vue";
-
+    import { toDate, formatNumber } from '@/utils';
     import {
         CandyMachine,
         awaitTransactionSignatureConfirmation,
         getCandyMachineState,
         mintOneToken,
     } from "../candy-machine";
-    const treasury = new anchor.web3.PublicKey(
-        process.env.VUE_APP_TREASURY_ADDRESS || 'AzLavVkRpTeLuikMpPS6nXRFFda5MmJx5DA5n8qCdtQe'
-    );
-    const config = new anchor.web3.PublicKey(
-        process.env.VUE_APP_CANDY_MACHINE_CONFIG || 'GoaT5Q2aNpy68wcsK3yVp8swvvJoAFiYcRmjV9rqTM9g'
-    );
-
+    const store = useStore()
     const candyMachineId = new anchor.web3.PublicKey(
-        process.env.VUE_APP_CANDY_MACHINE_ID || '3eqmvoez56HxEX1RGKVH12pPxRf94wFkHKvVyF9AL9pS'
-    );
-    // const rpcHost = process.env.VUE_APP_SOLANA_RPC_HOST;
-    const rpcHost = 'https://explorer-api.devnet.solana.com';
-
-    const connection = new anchor.web3.Connection(rpcHost || '');
+      '68E14mDV9vsz4YaWiT3sQtdhB8f6YigCAUcdrsi6mTjh'
+    )
+    const rpcHost = process.env.VUE_APP_SOLANA_RPC_HOST!
+    const connection = new anchor.web3.Connection(
+        rpcHost ? rpcHost : anchor.web3.clusterApiUrl('devnet'),
+    )
 
     // const startDateSeed = parseInt(process.env.VUE_APP_CANDY_START_DATE || '0', 10);
-    const startDateSeed = parseInt('1644364015000', 10);
-
+    const startDateSeed = parseInt('1649228789811', 10);
     const txTimeout = 30000;
 
-    const isActive = ref<boolean>(false)
-    const isSoldOut = ref<boolean>(false)
+    const isActive = ref<boolean>()
+    const isSoldOut = ref<boolean>()
     const isMinting = ref<boolean>(false)
     const itemsAvailable = ref<number>(0)
     const itemsRedeemed = ref<number>(0)
@@ -78,31 +78,117 @@
 
     const wallet = useAnchorWallet();
     const candyMachine = ref<CandyMachine>()
+    const treasury = ref<anchor.web3.PublicKey>()
+    const config = ref<anchor.web3.PublicKey>()
+    const price = ref<anchor.BN>()
+    const endDate = ref<Date>()
+    const endSettings = ref<null | { number: anchor.BN, endSettingType: any}>()
+    const goLiveDate = ref<anchor.BN>()
+    const isPresale = ref<boolean>()
+    const discountPrice = ref<anchor.BN>()
+
+    store.dispatch(ActionTypes.FetchCollection, {id:1})
+    const collection = store.getters.GetCollectionData
 
     const refreshCandyMachineState = async () => {
         if (!wallet.value) return;
 
-        const {
-            candyMachine: candyMachineBis,
-            goLiveDate: goLiveDateBis,
-            itemsAvailable: itemsAvailableBis,
-            itemsRemaining: itemsRemainingBis,
-            itemsRedeemed: itemsRedeemedBis,
+        let {
+            id:idBis,
+            program:programBis,
+            state:stateBis,
+            config:configBis
         } = await getCandyMachineState(
             wallet.value as anchor.Wallet,
             candyMachineId,
             connection
         );
 
-        itemsAvailable.value = itemsAvailableBis;
-        itemsRemaining.value = itemsRemainingBis;
-        itemsRedeemed.value = itemsRedeemedBis;
+        itemsAvailable.value = stateBis.itemsAvailable
+        itemsRemaining.value = stateBis.itemsRemaining
+        itemsRedeemed.value = stateBis.itemsRedeemed
 
-        isSoldOut.value = itemsRemaining.value === 0;
-        startDate.value = goLiveDateBis;
-        candyMachine.value = candyMachineBis;
+        let active = stateBis.goLiveDate?.toNumber() < new Date().getTime() / 1000;
+        let presale = false
+        //whitelist mint ?
+        if(stateBis.whitelistMintSettings)
+        {
+            if(stateBis.whitelistMintSettings.presale &&
+                (!stateBis.goLiveDate || stateBis.goLiveDate.toNumber() > new Date().getTime() / 1000 )
+            )
+            {
+                presale = true
+            }
+        }
+
+        //is there discount ?
+        if(stateBis.whitelistMintSettings?.discountPrice)
+        {
+            discountPrice.value = stateBis.whitelistMintSettings.discountPrice
+        } else {
+            discountPrice.value = undefined
+            if(!stateBis.whitelistMintSettings?.presale)
+            {
+                stateBis.isWhitelistOnly = true
+            }
+        }
+
+        //retrieves the whitelist token
+        // const mint  = new anchor.web3.PublicKey(
+        //     whitelistMintSettingsBis?.mint
+        // )
+        // const token = (await getAtaForMint(mint, anch))
+
+
+        // datetime to stop the mint?
+        if(stateBis.endSettings?.endSettingType.date)
+        {
+            endDate.value = toDate(stateBis.endSettings.number)
+            if(stateBis.endSettings.number.toNumber() < new Date().getTime() / 1000)
+            {
+                active = false;
+            }
+        }
+        // amount to stop the mint?
+        if(stateBis.endSettings?.endSettingType.amount){
+            let limit = Math.min(stateBis.endSettings.number.toNumber(), stateBis.itemsAvailable)
+            if(stateBis.itemsRedeemed < limit)
+            {
+                itemsRemaining.value = limit - stateBis.itemsRedeemed
+            }
+            else
+            {
+                itemsRemaining.value = 0
+                stateBis.isSoldOut = true;
+            }
+        }
+        else
+        {
+            itemsRemaining.value = stateBis.itemsRemaining
+        }
+
+
+        if(stateBis.isSoldOut)
+        {
+            active = false
+        }
+        stateBis.isActive = active
+        stateBis.isPresale = presale
+        //assign values
+        console.log(stateBis.price)
+        startDate.value = stateBis.goLiveDate
+        candyMachine.value = {id:idBis,program:programBis, state:stateBis, config:configBis}
+        treasury.value = stateBis.treasury
+        config.value = configBis
+        isActive.value = stateBis.isActive
+        price.value = stateBis.price
+        goLiveDate.value = stateBis.goLiveDate
+        endSettings.value = stateBis.endSettings
+        isPresale.value = stateBis.isPresale
+
+
     };
-
+    console.log(startDate.value)
     const refreshBalance = async () => {
         if (wallet && wallet?.value?.publicKey !== undefined) {
             balance.value = await connection.getBalance(wallet.value.publicKey) / LAMPORTS_PER_SOL;
@@ -177,5 +263,25 @@
         }
     };
 
+    const getCountdownDate = (
+        isActive: boolean,
+        endSettings: null | { number: anchor.BN, endSettingType: any},
+        goLiveDate:anchor.BN,
+        isPresale: boolean,
+    ): Date | undefined => {
+        if (
+            isActive &&
+            endSettings?.endSettingType.date
+        ) {
+            return toDate(endSettings.number);
+        }
+        return toDate(
+            goLiveDate
+            ? goLiveDate
+            : isPresale
+            ? new anchor.BN(new Date().getTime() / 1000)
+            : undefined,
+        );
+    };
     watch(wallet, refreshAll, { immediate: true })
 </script>

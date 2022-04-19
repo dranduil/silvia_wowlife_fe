@@ -9,6 +9,22 @@
             <AuthorHero></AuthorHero>
         </header>
         <!-- Collections -->
+        <section class="banner-collection">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 collection-mint">
+                        <div>
+                            <ButtonLink link="/mint" text=" Mint collection Now " class="btn btn-dark"></ButtonLink>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 collection-preview">
+                        <div>
+                            <ButtonLink link="/collections/view-detail/1" text=" View Detail of Collection " class="btn btn-dark"></ButtonLink>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <CollectionViewItems></CollectionViewItems>
         <!-- Footer  -->
         <Footer classname="bg-dark on-dark"></Footer>
@@ -22,12 +38,14 @@
     import { useStore } from '@/store'
     import { ActionTypes } from '@/store/actions'
     import { useRoute } from "vue-router";
+import ButtonLink from '@/components/common/ButtonLink.vue';
 
     export default defineComponent({
         name: 'CollectionView',
         components: {
-            CollectionViewItems
-        },
+    CollectionViewItems,
+    ButtonLink
+},
         setup(){
             const route = useRoute()
             const store = useStore()

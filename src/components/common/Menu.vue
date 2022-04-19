@@ -18,7 +18,7 @@
     <WalletModal :container="'#aside'"></WalletModal>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
   import MenuList2 from '@/components/common/MenuList2.vue'
   import { watch } from 'vue'
   import { useWalletModal, WalletModal } from "@solana/wallet-adapter-vue-ui"
@@ -26,6 +26,7 @@
   import { shortenAddress } from "../../candy-machine";
 
   const { visible, showModal, hideModal } = useWalletModal();
+
   const { connect, ready } = useWallet()
 
   watch(ready, () => {
