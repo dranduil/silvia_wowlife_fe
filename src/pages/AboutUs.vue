@@ -27,8 +27,6 @@
               <!-- </div> -->
           </div><!-- .container -->
       </section><!-- end blog-section -->
-      <!-- Cta  -->
-      <Cta class="section-space-b bg-pattern" :title="SectionData.ctaDataTwo.title" :content="SectionData.ctaDataTwo.content" :btntext="SectionData.ctaDataTwo.btnText" :btnlink="SectionData.ctaDataTwo.btnLink"></Cta>
       <!-- Footer  -->
       <Footer classname="bg-dark on-dark"></Footer>
   </div><!-- end page-wrap -->
@@ -36,7 +34,6 @@
 
 <script lang="ts">
 // Import component data. You can change the data in the store to reflect in all component
-import SectionData from '@/store/store'
 import { computed, defineComponent, onMounted } from 'vue'
 import { useStore } from '@/store'
 import { ActionTypes } from '@/store/actions'
@@ -47,7 +44,7 @@ export default defineComponent({
     const SectionDatas = computed(() => store.getters.GetState)
     const pageData = computed(() => store.getters.GetPageData)
     onMounted(() => store.dispatch(ActionTypes.FetchPage, {id: 1}))
-    return { SectionDatas, pageData, SectionData }
+    return { SectionDatas, pageData }
   }
 })
 </script>

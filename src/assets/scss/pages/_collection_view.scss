@@ -1,9 +1,11 @@
 .banner-collection {
     padding-top: 1em;
+
     .row {
         padding: 1em;
     }
-    .collection-mint{
+
+    .collection-mint {
         div {
             padding: 1em;
             display: flex;
@@ -12,8 +14,10 @@
             align-content: center;
             background-color: #d2d2d2;
             border-radius: 5px;
+            margin: 1em 0;
         }
     }
+
     .collection-preview {
         div {
             padding: 1em;
@@ -23,6 +27,7 @@
             align-content: center;
             background-color: #d2d2d2;
             border-radius: 5px;
+            margin: 1em 0;
         }
     }
 }

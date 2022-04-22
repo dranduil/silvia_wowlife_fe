@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/*
 #logo {
     width: 350px;
     fill: none;
@@ -52,4 +52,4 @@
     to {
         fill: #ffffff;
     }
-}
+} */
