@@ -27,7 +27,7 @@
                                 <div class="redeemed"><span>Redeemed</span> {{ itemsRedeemed }}</div>
                                 <div class="remaing"><span>Remaining</span> {{ itemsRemaining }}</div>
                             </div>
-                            <div class="collection-info-price"><span>Price :</span> {{ formatNumber.asNumber(price) }} <SolanaLogo /></div>
+                            <div class="collection-info-price"><span>Price : </span> {{ formatNumber.asNumber(price) }} <SolanaLogo /></div>
                             <span class="collection-info-date">{{getCountdownDate(isActive,endSettings,goLiveDate,isPresale)}}</span>
                             <button :disabled="isSoldOut || isMinting || !isActive" class=" btn btn-dark" @click="mint">
                                 <span v-if="isSoldOut">Sold Out</span>
