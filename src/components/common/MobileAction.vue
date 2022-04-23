@@ -118,7 +118,7 @@ export default {
     const navbar_toggle = document.querySelector('.' + _navbar_toggle)
     // eslint-disable-next-line camelcase
     const menu_toggle = document.querySelectorAll('.' + _menu_toggle)
-
+    console.log(parent)
     // Toggle Dropdown Menu
     function toggleDropdown (parent, subMenu, _active) {
       if (!parent.classList.contains(_active)) {
@@ -195,6 +195,7 @@ export default {
     // eslint-disable-next-line camelcase
     if (navbar_toggle) {
       navbar_toggle.addEventListener('click', function () {
+        console.log("siamo qui")
         mobileNavToggle()
       })
     }
