@@ -1,5 +1,5 @@
 <template>
-    <div class="page-wrap">
+    <div class="page-wrap mint-page">
         <!-- header  -->
         <header class="header-section has-header-main">
         <!-- Header main -->
@@ -9,26 +9,36 @@
             <WalletModalProvider>
             </WalletModalProvider >
         </WalletProvider>
-        <section class="about-section pt-5 mt-3">
+        <section class="mint-section pt-5 mt-3">
             <div class="container">
                 <div class="row align-items-center flex flex-lg-row-reverse">
-                    <h3 class="text-base font-bold" style="text-align: center;">Mint of {{collection.name}}</h3>
                     <div class="mt-4" v-if="wallet">
-                        <p>Balance: {{ (balance || 0).toLocaleString() }} SOL</p>
-                        <p>Total Available: {{ itemsAvailable }}</p>
-                        <p>Redeemed: {{ itemsRedeemed }}</p>
-                        <p>Remaining: {{ itemsRemaining }}</p>
-                        <p>Price: {{ formatNumber.asNumber(price) }}</p>
-                        <span>{{getCountdownDate(isActive,endSettings,goLiveDate,isPresale)}}</span>
-                        <button :disabled="isSoldOut || isMinting || !isActive" class="w-full px-2 py-1 mt-4 text-center bg-blue-500 rounded-md btn" @click="mint">
-                            <span v-if="isSoldOut">Sold Out</span>
-                            <span v-else-if="isMinting">Minting...</span>
-                            <span v-else-if="isActive">Mint</span>
-                            
-                            <!-- <VueCountdown v-else :time="getCountdownDate(isActive,endSettings,goLiveDate,isPresale)"  v-slot="{ days, hours, minutes, seconds }">
-                                Available in ：{{ days }}d {{ hours }}h {{ minutes }}m {{ seconds }}s
-                            </VueCountdown> -->
-                        </button>
+                        <div class="balance-wallet-container">
+                            <div class="wallet-row">
+                                <h3>Solana</h3>
+                                <div>Balance: {{ (balance || 0).toLocaleString() }} <SolanaLogo /></div>
+                            </div>
+                        </div>
+
+                        <div class="collection-info-container">
+                            <h3 class="text-base font-bold" style="text-align: center;">Mint of {{collection.name}}</h3>
+                            <div class="collection-info-row">
+                                <div class="available"><span>Total Available</span> {{ itemsAvailable }}</div>
+                                <div class="redeemed"><span>Redeemed</span> {{ itemsRedeemed }}</div>
+                                <div class="remaing"><span>Remaining</span> {{ itemsRemaining }}</div>
+                            </div>
+                            <div class="collection-info-price"><span>Price :</span> {{ formatNumber.asNumber(price) }} <SolanaLogo /></div>
+                            <span>{{getCountdownDate(isActive,endSettings,goLiveDate,isPresale)}}</span>
+                            <button :disabled="isSoldOut || isMinting || !isActive" class="w-full px-2 py-1 mt-4 text-center bg-blue-500 rounded-md btn" @click="mint">
+                                <span v-if="isSoldOut">Sold Out</span>
+                                <span v-else-if="isMinting">Minting...</span>
+                                <span v-else-if="isActive">Mint</span>
+
+                                <VueCountdown v-else :time="getCountdownDate(isActive,endSettings,goLiveDate,isPresale)"  v-slot="{ days, hours, minutes, seconds }">
+                                    <span class="collection-countdown">Available in ：{{ days }}d {{ hours }}h {{ minutes }}m {{ seconds }}s</span>
+                                </VueCountdown>
+                            </button>
+                        </div>
                     </div>
                     <div class="px-2 py-1 mt-4 bg-red-500 rounded-md" v-else>Please connect your wallet</div>
                 </div>
@@ -54,6 +64,8 @@
         getCandyMachineState,
         mintOneToken,
     } from "../candy-machine";
+    import SolanaLogo from '@/components/Solana.vue'
+
     const store = useStore()
     const candyMachineId = new anchor.web3.PublicKey(
       '68E14mDV9vsz4YaWiT3sQtdhB8f6YigCAUcdrsi6mTjh'

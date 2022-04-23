@@ -1,9 +1,6 @@
 <template>
   <nav class="header-menu menu nav">
-      <!-- menu list -->
-      <!-- <MenuList></MenuList> -->
       <MenuList2></MenuList2>
-      <!-- header btn -->
       <ul class="menu-btns">
           <li>
             <button class="btn btn-dark" @click="showModal" v-if="!wallet">Connect Wallet</button>
@@ -13,7 +10,7 @@
              <ThemeSwitcher></ThemeSwitcher>
           </li>
       </ul>
-  </nav><!-- .header-menu -->
+  </nav>
   <div v-if="visible" @click="hideModal" class="fixed inset-0"></div>
     <WalletModal :container="'#aside'"></WalletModal>
 </template>
@@ -26,9 +23,7 @@
   import { shortenAddress } from "../../candy-machine";
 
   const { visible, showModal, hideModal } = useWalletModal();
-
   const { connect, ready } = useWallet()
-
   watch(ready, () => {
       if (ready.value) {
           connect()
