@@ -13,13 +13,25 @@ export interface AlertState {
   severity: 'success' | 'info' | 'warning' | 'error' | undefined;
 }
 
-export const toDate = (value?: anchor.BN):Date | undefined => {
+export const toDate = (value?: anchor.BN): Date | undefined => {
   if (!value) {
     return undefined;
   }
-
+  console.log(new Date(value.toNumber() * 1000).getHours())
   return new Date(value.toNumber() * 1000);
 };
+
+export const toDateForVueCountDown = (value?: anchor.BN): number | undefined => {
+  if (!value) {
+    return undefined
+  }
+
+  const end: any = new Date(value.toNumber() * 1000); // Arrange values in Date Time Format
+  const now: any = new Date();
+  const remain = end - now; // Get The Difference Between Current and entered date time
+
+  return remain;
+}
 
 const numberFormater = new Intl.NumberFormat('en-US', {
   style: 'decimal',
@@ -28,7 +40,7 @@ const numberFormater = new Intl.NumberFormat('en-US', {
 });
 
 export const formatNumber = {
-  format: (val?: number):number | string => {
+  format: (val?: number): number | string => {
     if (!val) {
       return '--';
     }
@@ -91,7 +103,7 @@ export function createAssociatedTokenAccountInstruction(
   payer: anchor.web3.PublicKey,
   walletAddress: anchor.web3.PublicKey,
   splTokenMintAddress: anchor.web3.PublicKey,
-):TransactionInstruction {
+): TransactionInstruction {
   const keys = [
     {
       pubkey: payer,

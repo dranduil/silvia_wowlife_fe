@@ -28,13 +28,13 @@
                                 <div class="remaing"><span>Remaining</span> {{ itemsRemaining }}</div>
                             </div>
                             <div class="collection-info-price"><span>Price :</span> {{ formatNumber.asNumber(price) }} <SolanaLogo /></div>
-                            <span>{{getCountdownDate(isActive,endSettings,goLiveDate,isPresale)}}</span>
-                            <button :disabled="isSoldOut || isMinting || !isActive" class="w-full px-2 py-1 mt-4 text-center bg-blue-500 rounded-md btn" @click="mint">
+                            <span class="collection-info-date">{{getCountdownDate(isActive,endSettings,goLiveDate,isPresale)}}</span>
+                            <button :disabled="isSoldOut || isMinting || !isActive" class=" btn btn-dark" @click="mint">
                                 <span v-if="isSoldOut">Sold Out</span>
                                 <span v-else-if="isMinting">Minting...</span>
                                 <span v-else-if="isActive">Mint</span>
 
-                                <VueCountdown v-else :time="getCountdownDate(isActive,endSettings,goLiveDate,isPresale)"  v-slot="{ days, hours, minutes, seconds }">
+                                <VueCountdown v-else :time="getCountdownDate(isActive,endSettings,goLiveDate,isPresale, true)" :interval="100"  v-slot="{ days, hours, minutes, seconds }">
                                     <span class="collection-countdown">Available in ：{{ days }}d {{ hours }}h {{ minutes }}m {{ seconds }}s</span>
                                 </VueCountdown>
                             </button>
@@ -57,7 +57,7 @@
     import { ActionTypes } from '@/store/actions';
     import { LAMPORTS_PER_SOL } from "@solana/web3.js";
     import { useAnchorWallet } from "@solana/wallet-adapter-vue";
-    import { toDate, formatNumber } from '@/utils';
+    import { toDate, formatNumber, toDateForVueCountDown } from '@/utils';
     import {
         CandyMachine,
         awaitTransactionSignatureConfirmation,
@@ -74,7 +74,8 @@
     const connection = new anchor.web3.Connection(
         rpcHost ? rpcHost : anchor.web3.clusterApiUrl('devnet'),
     )
-
+    console.log(process.env)
+    console.log(connection)
     // const startDateSeed = parseInt(process.env.VUE_APP_CANDY_START_DATE || '0', 10);
     const startDateSeed = parseInt('1649228789811', 10);
     const txTimeout = 30000;
@@ -280,12 +281,23 @@
         endSettings: null | { number: anchor.BN, endSettingType: any},
         goLiveDate:anchor.BN,
         isPresale: boolean,
-    ): Date | undefined => {
+        isCountdown = false
+    ): Date | number | undefined => {
         if (
             isActive &&
             endSettings?.endSettingType.date
         ) {
             return toDate(endSettings.number);
+        }
+        if(isCountdown)
+        {
+           return toDateForVueCountDown(
+                goLiveDate
+                ? goLiveDate
+                : isPresale
+                ? new anchor.BN(new Date().getTime() / 1000)
+                : undefined,
+            );
         }
         return toDate(
             goLiveDate

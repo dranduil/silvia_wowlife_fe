@@ -60,10 +60,15 @@
         font-weight: bold;
         width: 125px;
         text-align: center;
+        width: 100%;
     }
 
     .collection-info-price {
         display: flex;
+        padding: 2em;
+    }
+
+    .collection-info-date {
         padding: 2em;
     }
 
