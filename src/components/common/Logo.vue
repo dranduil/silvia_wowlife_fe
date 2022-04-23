@@ -6,8 +6,11 @@
 </template>
 
 <script>
-
+import LogoLink from '@/components/common/LogoLink.vue'
 export default {
-  name: 'Logo'
+  name: 'Logo',
+  components: {
+    LogoLink
+  }
 }
 </script>

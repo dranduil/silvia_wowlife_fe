@@ -50,7 +50,6 @@
 
 <script lang="ts">
 // Import component data. You can change the data in the store to reflect in all component
-    import SectionData from '@/store/store'
     import { defineComponent} from 'vue'
     import { useStore } from '@/store/index'
     export default defineComponent({
@@ -58,7 +57,7 @@
         setup(){
             const store = useStore()
             const collection = store.getters.GetCollectionData
-            return {SectionData, collection}
+            return { collection}
         }
     })
 </script>

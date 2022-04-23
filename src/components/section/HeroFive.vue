@@ -4,7 +4,7 @@
             <div class="row align-items-center flex-lg-row-reverse justify-lg-content-center">
                 <div class="col-lg-6 col-sm-9">
                     <div class="row gx-4">
-                        <div class="col-xl-8">
+                        <!-- <div class="col-xl-8">
                             <div class="card card-s2" v-for="product in showItem.slice(0,1)" :key="product.id">
                                 <div class="card-image">
                                     <img :src="product.imgLg" alt="" class="card-img-top card-img-height">
@@ -14,8 +14,8 @@
                                     <div class="card-author d-flex align-items-center">
                                         <span class="me-1 card-author-by">By</span>
                                         <router-link :to="product.authorLink" class="author-link">{{ product.author }}</router-link>
-                                    </div><!-- end card-author -->
-                                </div><!-- end card-body -->
+                                    </div>
+                                </div>
                                 <router-link
                                 class="details"
                                 :to="{
@@ -35,9 +35,9 @@
                                 }"
                             >
                             </router-link>
-                            </div><!-- end card -->
-                        </div>
-                        <div class="col-xl-4 d-xl-block d-none">
+                            </div>
+                        </div> -->
+                        <!-- <div class="col-xl-4 d-xl-block d-none">
                             <div class="card card-s2" v-for="product in showItem.slice(1,3)" :key="product.id">
                                 <div class="card-image">
                                     <img :src="product.imgLg" alt="" class="card-img-top">
@@ -47,8 +47,8 @@
                                     <div class="card-author d-flex align-items-center">
                                             <span class="me-1 card-author-by">By</span>
                                         <router-link :to="product.authorLink" class="author-link">{{ product.author }}</router-link>
-                                    </div><!-- end card-author -->
-                                </div><!-- end card-body -->
+                                    </div>
+                                </div>
                                 <router-link
                                 class="details"
                                 :to="{
@@ -68,20 +68,20 @@
                                 }"
                             >
                             </router-link>
-                            </div><!-- end card -->
-                        </div><!-- end col -->
-                    </div><!-- end row -->
+                            </div>
+                        </div> -->
+                    </div>
                 </div><!-- end col -->
                 <div class="col-lg-6 col-sm-9">
                     <div class="hero-content pt-lg-0 pb-0 mt-lg-n4">
-                        <h6 class="hero-meta text-uppercase text-primary mb-3">{{ SectionData.heroDataFour.subTitle }}</h6>
-                        <h1 class="hero-title">{{ SectionData.heroDataFour.title }}</h1>
+                        <h6 class="hero-meta text-uppercase text-primary mb-3">titolo</h6>
+                        <h1 class="hero-title"> hero title</h1>
                         <ul class="list-item list-item-icon list-item-hero">
                             <li><span class="ni ni-check icon icon-circle icon-wbg icon-xs"></span> Create, Buy, Sell and Earn with NFTs</li>
                             <li><span class="ni ni-check icon icon-circle icon-wbg icon-xs"></span> Faster and cheaper fees under $1</li>
                             <li><span class="ni ni-check icon icon-circle icon-wbg icon-xs"></span> Stake your earnings and earn more.</li>
                         </ul>
-                        <ButtonGroup :btns="SectionData.btnDataThree" classname="hero-btns"></ButtonGroup>
+                        <!-- <ButtonGroup :btns="SectionData.btnDataThree" classname="hero-btns"></ButtonGroup> -->
                     </div><!-- hero-content -->
                 </div><!-- col-lg-6 -->
             </div>
@@ -89,26 +89,9 @@
     </div><!-- end hero-wrap -->
 </template>
 
-<script>
+<script lang="ts" setup>
 // Import component data. You can change the data in the store to reflect in all component
-import SectionData from '@/store/store'
 
-export default {
-  name: 'HeroFive',
-  data () {
-    return {
-      SectionData
-    }
-  },
-  computed: {
-    showItem() {
-        return this.SectionData.productData.products.filter(item => item.itemToShowTwo === 'show')
-    },
-    showItemSingle() {
-        return this.SectionData.productData.products.filter(item => item.itemToShowSingle === 'show')
-    },
-  }
-}
 </script>
 
 <style lang="css" scoped>
