@@ -1,0 +1,3 @@
+# @typescript-eslint/parser can not parse vue v-on
+src/App.vue
+src/pages/Mint.vue

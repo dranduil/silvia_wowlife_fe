@@ -57,7 +57,8 @@
     import { ActionTypes } from '@/store/actions';
     import { LAMPORTS_PER_SOL } from "@solana/web3.js";
     import { useAnchorWallet } from "@solana/wallet-adapter-vue";
-    import { toDate, formatNumber, toDateForVueCountDown } from '@/utils';
+    import { toDate, formatNumber, toDateForVueCountDown, getCandyMachineId } from '@/utils';
+    import { AlertState } from '@/interfaces/props'
     import {
         CandyMachine,
         awaitTransactionSignatureConfirmation,
@@ -67,9 +68,15 @@
     import SolanaLogo from '@/components/Solana.vue'
 
     const store = useStore()
-    const candyMachineId = new anchor.web3.PublicKey(
-      '68E14mDV9vsz4YaWiT3sQtdhB8f6YigCAUcdrsi6mTjh'
-    )
+    // const candyMachineId = new anchor.web3.PublicKey(
+    //   '68E14mDV9vsz4YaWiT3sQtdhB8f6YigCAUcdrsi6mTjh'
+    // )
+    const candyMachineId = getCandyMachineId();
+    let alertState:AlertState = {
+        open: false,
+        message: '',
+        severity: undefined
+    }
     const rpcHost = process.env.VUE_APP_SOLANA_RPC_HOST!
     const connection = new anchor.web3.Connection(
         rpcHost ? rpcHost : anchor.web3.clusterApiUrl('devnet'),
@@ -201,7 +208,6 @@
 
 
     };
-    console.log(startDate.value)
     const refreshBalance = async () => {
         if (wallet && wallet?.value?.publicKey !== undefined) {
             balance.value = await connection.getBalance(wallet.value.publicKey) / LAMPORTS_PER_SOL;
@@ -214,16 +220,17 @@
     }
 
     const mint = async () => {
+        console.log("inizio mint")
         try {
             isMinting.value = true
+            console.log("dentro try before if")
             if (wallet && candyMachine.value?.program && wallet?.value?.publicKey !== undefined) {
+                console.log("prima mintxid")
+                console.log(candyMachine)
                 const mintTxId = await mintOneToken(
                     candyMachine.value,
-                    config,
-                    wallet.value.publicKey,
-                    treasury
+                    wallet.value.publicKey
                 );
-
                 const status = await awaitTransactionSignatureConfirmation(
                     mintTxId,
                     txTimeout,
@@ -231,21 +238,21 @@
                     "singleGossip",
                     false
                 );
-
+                console.log(status)
                 if (!status?.err) {
                     console.log("Congratulations! Mint succeeded!")
-                    // setAlertState({
-                    //     open: true,
-                    //     message: "Congratulations! Mint succeeded!",
-                    //     severity: "success",
-                    // });
+                    alertState = {
+                        open: true,
+                        message: "Congratulations! Mint succeeded!",
+                        severity: "success",
+                    }
                 } else {
                     console.log("Mint failed! Please try again!")
-                    // setAlertState({
-                    //     open: true,
-                    //     message: "Mint failed! Please try again!",
-                    //     severity: "error",
-                    // });
+                    alertState = {
+                        open: true,
+                        message: "Mint failed! Please try again!",
+                        severity: "error",
+                    };
                 }
             }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -268,7 +275,7 @@
                     message = `Minting period hasn't started yet.`;
                 }
             }
-
+            console.log(error)
             console.log(message)
         } finally {
             refreshAll()
