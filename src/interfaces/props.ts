@@ -5,3 +5,9 @@ export interface HomeProps {
     txTimeout: number;
     rpcHost: string;
   }
+
+export interface AlertState {
+  open: boolean,
+  message: string,
+  severity: string | undefined,
+}

@@ -27,7 +27,8 @@ import { WalletModalProvider } from "@solana/wallet-adapter-vue-ui";
 
 // const network = process.env.VUE_APP_SOLANA_NETWORK as WalletAdapterNetwork;
 // const networkSelected = store.state.RPCNetworks.find( (net) => net.id === NetworkConnection.MAINNET )
-const network = WalletAdapterNetwork.Mainnet
+// const network = WalletAdapterNetwork.Mainnet
+const network = WalletAdapterNetwork.Devnet
 // const rpcHost = networkSelected?.UrlNetWork
 console.log(network)
 console.log(getPhantomWallet)

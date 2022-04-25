@@ -17,7 +17,6 @@ export const toDate = (value?: anchor.BN): Date | undefined => {
   if (!value) {
     return undefined;
   }
-  console.log(new Date(value.toNumber() * 1000).getHours())
   return new Date(value.toNumber() * 1000);
 };
 
@@ -51,8 +50,6 @@ export const formatNumber = {
     if (!val) {
       return undefined;
     }
-    // console.log(val)
-    // console.log(LAMPORTS_PER_SOL)
     return Number.parseInt(val.toString()) / LAMPORTS_PER_SOL;
   },
 };
@@ -97,6 +94,15 @@ export const getNetworkToken = async (
     CIVIC,
   );
 };
+
+export const getCandyMachineId = (): anchor.web3.PublicKey  => {
+  const candyMachineId = new anchor.web3.PublicKey(
+    process.env.VUE_APP_CANDY_MACHINE_ID!,
+  );
+
+  return candyMachineId;
+};
+
 
 export function createAssociatedTokenAccountInstruction(
   associatedTokenAddress: anchor.web3.PublicKey,
