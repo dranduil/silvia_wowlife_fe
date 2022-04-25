@@ -76,12 +76,6 @@
                     <div class="hero-content pt-lg-0 pb-0 mt-lg-n4">
                         <h6 class="hero-meta text-uppercase text-primary mb-3">{{ SectionData.heroDataFour.subTitle }}</h6>
                         <h1 class="hero-title">{{ SectionData.heroDataFour.title }}</h1>
-                        <ul class="list-item list-item-icon list-item-hero">
-                            <li><span class="ni ni-check icon icon-circle icon-wbg icon-xs"></span> Create, Buy, Sell and Earn with NFTs</li>
-                            <li><span class="ni ni-check icon icon-circle icon-wbg icon-xs"></span> Faster and cheaper fees under $1</li>
-                            <li><span class="ni ni-check icon icon-circle icon-wbg icon-xs"></span> Stake your earnings and earn more.</li>
-                        </ul>
-                        <ButtonGroup :btns="SectionData.btnDataThree" classname="hero-btns"></ButtonGroup>
                     </div><!-- hero-content -->
                 </div><!-- col-lg-6 -->
             </div>

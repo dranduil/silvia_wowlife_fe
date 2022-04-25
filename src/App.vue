@@ -2,6 +2,7 @@
   <SolanaApp>
     <router-view :key="$route.path"/>
   </SolanaApp>
+  <notifications />
 </template>
 
 <script lang="ts" setup>

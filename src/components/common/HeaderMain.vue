@@ -8,7 +8,7 @@
                 <!-- mobile action -->
                 <MobileAction></MobileAction>
                 <!-- heder search -->
-                <HeaderSearch></HeaderSearch>
+                <!-- <HeaderSearch></HeaderSearch> -->
                 <!-- Menu -->
                 <Menu v-if="largeVisible" classname="btn-dark"></Menu>
                 <div class="header-overlay"></div>

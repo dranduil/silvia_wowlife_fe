@@ -4722,28 +4722,28 @@ const SectionData = {
   },
   // footer data
   footerData: {
-    content: "The world's first and largest digital marketplace for crypto collectibles and non-fungible tokens (NFTs).",
+    content: "A brand of quality, Brand of Italian Art, be and think different.",
     footerList: [
       {
         id: 1,
-        title: 'Marketplace',
+        title: 'Top Collection',
         navList: [
           {
-            title: 'All NFTs',
-            path: '/explore'
+            title: 'Coming Soon',
+            path: '/#'
           },
-          {
-            title: 'Art',
-            path: '/explore'
-          },
-          {
-            title: 'Music',
-            path: '/explore'
-          },
-          {
-            title: 'Metaverse',
-            path: '/explore'
-          }
+          // {
+          //   title: 'Art',
+          //   path: '/explore'
+          // },
+          // {
+          //   title: 'Music',
+          //   path: '/explore'
+          // },
+          // {
+          //   title: 'Metaverse',
+          //   path: '/explore'
+          // }
         ]
       },
       {
@@ -4751,21 +4751,21 @@ const SectionData = {
         title: 'My Account',
         navList: [
           {
-            title: 'Profile',
-            path: 'profile'
+            title: 'Coming Soon',
+            path: '#'
           },
-          {
-            title: 'My NFTS',
-            path: 'offers'
-          },
-          {
-            title: 'Activity',
-            path: 'activity'
-          },
-          {
-            title: 'Sales & Purchase',
-            path: 'purchases-sales'
-          }
+          // {
+          //   title: 'My NFTS',
+          //   path: 'offers'
+          // },
+          // {
+          //   title: 'Activity',
+          //   path: 'activity'
+          // },
+          // {
+          //   title: 'Sales & Purchase',
+          //   path: 'purchases-sales'
+          // }
         ]
       },
       {
@@ -4773,13 +4773,13 @@ const SectionData = {
         title: 'Company',
         navList: [
           {
-            title: 'About',
+            title: 'About Us',
             path: 'about-us'
           },
-          {
-            title: 'Blog',
-            path: 'blog'
-          },
+          // {
+          //   title: 'Blog',
+          //   path: 'blog'
+          // },
           // {
           //   title: 'Contact',
           //   path: 'contact'

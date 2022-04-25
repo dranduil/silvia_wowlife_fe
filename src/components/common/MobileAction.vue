@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-expressions */
 <template>
     <div class="header-mobile-action">
-        <div class="header-search-mobile dropdown me-2">
+        <!-- <div class="header-search-mobile dropdown me-2">
             <a class="icon-btn" href="#" data-bs-toggle="dropdown" aria-expanded="false"><em class="ni ni-search"></em></a>
             <div class="dropdown-menu dropdown-menu-end card-generic">
                 <div class="input-group">
@@ -10,12 +10,12 @@
                     <a href="#" class="btn btn-sm btn-outline-secondary"><em class="ni ni-search"></em></a>
                  </div>
             </div>
-        </div><!-- end header-search-mobile -->
-        <div class="header-mobile-wallet me-2">
+        </div> -->
+        <!-- <div class="header-mobile-wallet me-2">
             <router-link class="icon-btn" to="wallet">
                 <em class="ni ni-wallet"></em>
             </router-link>
-        </div><!-- end hheader-mobile-wallet -->
+        </div> -->
         <div class="header-toggle">
             <button class="menu-toggler">
                 <em class="menu-on menu-icon ni ni-menu"></em>
