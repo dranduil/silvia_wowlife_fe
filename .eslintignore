@@ -2,3 +2,4 @@
 src/App.vue
 src/pages/Mint.vue
 src/candy-machine.ts
+src/connection.ts
