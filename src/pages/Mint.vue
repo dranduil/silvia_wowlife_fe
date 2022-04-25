@@ -12,11 +12,12 @@
         <section class="mint-section pt-5 mt-3">
             <div class="container">
                 <div class="row align-items-center flex flex-lg-row-reverse">
-                    <div class="mt-4" v-if="wallet">
                         <div class="balance-wallet-container">
                             <div class="wallet-row">
                                 <h3>Solana</h3>
-                                <div>Balance: {{ (balance || 0).toLocaleString() }} <SolanaLogo /></div>
+
+                                <div v-if="wallet">Balance: {{ (balance || 0).toLocaleString() }} <SolanaLogo /></div>
+                                <div v-if="!wallet"> Connect your Wallet to know your balance</div>
                             </div>
                         </div>
 
@@ -29,7 +30,9 @@
                             </div>
                             <div class="collection-info-price"><span>Price : </span> {{ formatNumber.asNumber(price) }} <SolanaLogo /></div>
                             <span class="collection-info-date">{{getCountdownDate(isActive,endSettings,goLiveDate,isPresale)}}</span>
-                            <button :disabled="isSoldOut || isMinting || !isActive" class=" btn btn-dark" @click="mint">
+
+                            <div v-if="!wallet">Connect your wallet to mint this collection</div>
+                            <button v-if="wallet" :disabled="isSoldOut || isMinting || !isActive" class=" btn btn-dark" @click="mint">
                                 <span v-if="isSoldOut">Sold Out</span>
                                 <span v-else-if="isMinting">Minting...</span>
                                 <span v-else-if="isActive">Mint</span>
@@ -38,10 +41,7 @@
                                     <span class="collection-countdown">Available in ：{{ days }}d {{ hours }}h {{ minutes }}m {{ seconds }}s</span>
                                 </VueCountdown>
                             </button>
-                            <span class="alertstate-span" v-if="alertState.open">{{alertState.message}}</span>
                         </div>
-                    </div>
-                    <div class="px-2 py-1 mt-4 bg-red-500 rounded-md" v-else>Please connect your wallet</div>
                 </div>
             </div>
         </section>
