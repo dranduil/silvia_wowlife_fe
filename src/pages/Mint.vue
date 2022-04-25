@@ -38,6 +38,7 @@
                                     <span class="collection-countdown">Available in ：{{ days }}d {{ hours }}h {{ minutes }}m {{ seconds }}s</span>
                                 </VueCountdown>
                             </button>
+                            <span class="alertstate-span" v-if="alertState.open">{{alertState.message}}</span>
                         </div>
                     </div>
                     <div class="px-2 py-1 mt-4 bg-red-500 rounded-md" v-else>Please connect your wallet</div>
@@ -223,22 +224,19 @@
         console.log("inizio mint")
         try {
             isMinting.value = true
-            console.log("dentro try before if")
             if (wallet && candyMachine.value?.program && wallet?.value?.publicKey !== undefined) {
-                console.log("prima mintxid")
-                console.log(candyMachine)
                 const mintTxId = await mintOneToken(
                     candyMachine.value,
                     wallet.value.publicKey
                 );
+                console.log('this is mintTxId response for mintOneToken: ', mintTxId)
                 const status = await awaitTransactionSignatureConfirmation(
                     mintTxId,
                     txTimeout,
                     connection,
-                    "singleGossip",
-                    false
+                    true
                 );
-                console.log(status)
+                console.log('status :', status)
                 if (!status?.err) {
                     console.log("Congratulations! Mint succeeded!")
                     alertState = {
@@ -246,13 +244,27 @@
                         message: "Congratulations! Mint succeeded!",
                         severity: "success",
                     }
+                    setTimeout(function() {
+                        alertState = {
+                            open: false,
+                            message: "Congratulations! Mint succeeded!",
+                            severity: "success",
+                        }   
+                    })
                 } else {
                     console.log("Mint failed! Please try again!")
                     alertState = {
                         open: true,
                         message: "Mint failed! Please try again!",
                         severity: "error",
-                    };
+                    }
+                    setTimeout(function() {
+                        alertState = {
+                            open: false,
+                            message: "Congratulations! Mint succeeded!",
+                            severity: "success",
+                        }   
+                    })
                 }
             }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -511,6 +511,7 @@ async function awaitTransactionSignatureConfirmation(
             done = true;
             console.error('WS error in setup', txid, e);
         }
+        console.log('query status on connections.ts', queryStatus, 'done is :', done)
         while (!done && queryStatus) {
             // eslint-disable-next-line no-loop-func
             (async () => {

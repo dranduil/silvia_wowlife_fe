@@ -62,6 +62,19 @@
         text-align: center;
         width: 100%;
     }
+    .alertstate-span {
+        background: #0ac22c;
+        padding: 0.5em 1em;
+        margin: 1em;
+        width: 100px;
+        text-align: center;
+        border-radius: 14px;
+        border-width: 2px;
+        border-color: #000;
+        border-style: ridge;
+        color: #fff;
+        font-weight: bold;
+    }
 
     .collection-info-price {
         display: flex;
