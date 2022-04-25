@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import Notifications from '@kyvg/vue3-notification'
 import App from './App.vue'
 import router from './router'
 import { store } from '@/store'
@@ -21,6 +22,9 @@ app.use(VueClipboard, {
     autoSetContainer: true,
     appendToBody: true,
 })
+
+//notification
+app.use(Notifications)
 
 //Store
 app.use(store)

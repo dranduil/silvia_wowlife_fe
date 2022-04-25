@@ -52,6 +52,7 @@
 
 <script lang="ts" setup>
     import { ref, watch } from 'vue'
+    import { notify } from "@kyvg/vue3-notification";
     import * as anchor from "@project-serum/anchor";
     import VueCountdown from '@chenfengyuan/vue-countdown';
     import { useStore } from '@/store'
@@ -59,7 +60,6 @@
     import { LAMPORTS_PER_SOL } from "@solana/web3.js";
     import { useAnchorWallet } from "@solana/wallet-adapter-vue";
     import { toDate, formatNumber, toDateForVueCountDown, getCandyMachineId } from '@/utils';
-    import { AlertState } from '@/interfaces/props'
     import {
         CandyMachine,
         awaitTransactionSignatureConfirmation,
@@ -73,11 +73,6 @@
     //   '68E14mDV9vsz4YaWiT3sQtdhB8f6YigCAUcdrsi6mTjh'
     // )
     const candyMachineId = getCandyMachineId();
-    let alertState:AlertState = {
-        open: false,
-        message: '',
-        severity: undefined
-    }
     const rpcHost = process.env.VUE_APP_SOLANA_RPC_HOST!
     const connection = new anchor.web3.Connection(
         rpcHost ? rpcHost : anchor.web3.clusterApiUrl('devnet'),
@@ -239,32 +234,18 @@
                 console.log('status :', status)
                 if (!status?.err) {
                     console.log("Congratulations! Mint succeeded!")
-                    alertState = {
-                        open: true,
-                        message: "Congratulations! Mint succeeded!",
-                        severity: "success",
-                    }
-                    setTimeout(function() {
-                        alertState = {
-                            open: false,
-                            message: "Congratulations! Mint succeeded!",
-                            severity: "success",
-                        }   
-                    })
+                    notify({
+                        title: "Success",
+                        text: "Congratulations! Mint succeeded!",
+                        type:'success'
+                        })
                 } else {
                     console.log("Mint failed! Please try again!")
-                    alertState = {
-                        open: true,
-                        message: "Mint failed! Please try again!",
-                        severity: "error",
-                    }
-                    setTimeout(function() {
-                        alertState = {
-                            open: false,
-                            message: "Congratulations! Mint succeeded!",
-                            severity: "success",
-                        }   
-                    })
+                    notify({
+                        title: "error",
+                        text: "Mint failed! Please try again!",
+                        type:'error'
+                        })
                 }
             }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -290,6 +271,7 @@
             console.log(error)
             console.log(message)
         } finally {
+            console.log('before fresh All')
             refreshAll()
             isMinting.value = false
         }

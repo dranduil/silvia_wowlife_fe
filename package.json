@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@chenfengyuan/vue-countdown": "^2.0.0-rc",
+    "@kyvg/vue3-notification": "^2.3.4",
     "@popperjs/core": "^2.10.2",
     "@project-serum/anchor": "^0.17.0",
     "@soerenmartius/vue3-clipboard": "^0.1.2",
