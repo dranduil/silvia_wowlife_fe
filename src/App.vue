@@ -2,10 +2,11 @@
   <SolanaApp>
     <router-view :key="$route.path"/>
   </SolanaApp>
+  <notifications />
 </template>
 
 <script lang="ts" setup>
-  import SolanaApp from './components/SolanaApp.vue';
+  import SolanaApp from './components/SolanaApp.vue'
 </script>
 <style>
 #app {

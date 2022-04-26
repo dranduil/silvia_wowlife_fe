@@ -12,11 +12,12 @@
         <section class="mint-section pt-5 mt-3">
             <div class="container">
                 <div class="row align-items-center flex flex-lg-row-reverse">
-                    <div class="mt-4" v-if="wallet">
                         <div class="balance-wallet-container">
                             <div class="wallet-row">
                                 <h3>Solana</h3>
-                                <div>Balance: {{ (balance || 0).toLocaleString() }} <SolanaLogo /></div>
+
+                                <div v-if="wallet">Balance: {{ (balance || 0).toLocaleString() }} <SolanaLogo /></div>
+                                <div v-if="!wallet"> Connect your Wallet to know your balance</div>
                             </div>
                         </div>
 
@@ -29,7 +30,9 @@
                             </div>
                             <div class="collection-info-price"><span>Price : </span> {{ formatNumber.asNumber(price) }} <SolanaLogo /></div>
                             <span class="collection-info-date">{{getCountdownDate(isActive,endSettings,goLiveDate,isPresale)}}</span>
-                            <button :disabled="isSoldOut || isMinting || !isActive" class=" btn btn-dark" @click="mint">
+
+                            <div v-if="!wallet">Connect your wallet to mint this collection</div>
+                            <button v-if="wallet" :disabled="isSoldOut || isMinting || !isActive" class=" btn btn-dark" @click="mint">
                                 <span v-if="isSoldOut">Sold Out</span>
                                 <span v-else-if="isMinting">Minting...</span>
                                 <span v-else-if="isActive">Mint</span>
@@ -39,8 +42,6 @@
                                 </VueCountdown>
                             </button>
                         </div>
-                    </div>
-                    <div class="px-2 py-1 mt-4 bg-red-500 rounded-md" v-else>Please connect your wallet</div>
                 </div>
             </div>
         </section>
@@ -51,13 +52,14 @@
 
 <script lang="ts" setup>
     import { ref, watch } from 'vue'
+    import { notify } from "@kyvg/vue3-notification";
     import * as anchor from "@project-serum/anchor";
     import VueCountdown from '@chenfengyuan/vue-countdown';
     import { useStore } from '@/store'
     import { ActionTypes } from '@/store/actions';
     import { LAMPORTS_PER_SOL } from "@solana/web3.js";
     import { useAnchorWallet } from "@solana/wallet-adapter-vue";
-    import { toDate, formatNumber, toDateForVueCountDown } from '@/utils';
+    import { toDate, formatNumber, toDateForVueCountDown, getCandyMachineId } from '@/utils';
     import {
         CandyMachine,
         awaitTransactionSignatureConfirmation,
@@ -67,9 +69,10 @@
     import SolanaLogo from '@/components/Solana.vue'
 
     const store = useStore()
-    const candyMachineId = new anchor.web3.PublicKey(
-      '68E14mDV9vsz4YaWiT3sQtdhB8f6YigCAUcdrsi6mTjh'
-    )
+    // const candyMachineId = new anchor.web3.PublicKey(
+    //   '68E14mDV9vsz4YaWiT3sQtdhB8f6YigCAUcdrsi6mTjh'
+    // )
+    const candyMachineId = getCandyMachineId();
     const rpcHost = process.env.VUE_APP_SOLANA_RPC_HOST!
     const connection = new anchor.web3.Connection(
         rpcHost ? rpcHost : anchor.web3.clusterApiUrl('devnet'),
@@ -201,7 +204,6 @@
 
 
     };
-    console.log(startDate.value)
     const refreshBalance = async () => {
         if (wallet && wallet?.value?.publicKey !== undefined) {
             balance.value = await connection.getBalance(wallet.value.publicKey) / LAMPORTS_PER_SOL;
@@ -214,38 +216,36 @@
     }
 
     const mint = async () => {
+        console.log("inizio mint")
         try {
             isMinting.value = true
             if (wallet && candyMachine.value?.program && wallet?.value?.publicKey !== undefined) {
                 const mintTxId = await mintOneToken(
                     candyMachine.value,
-                    config,
-                    wallet.value.publicKey,
-                    treasury
+                    wallet.value.publicKey
                 );
-
+                console.log('this is mintTxId response for mintOneToken: ', mintTxId)
                 const status = await awaitTransactionSignatureConfirmation(
                     mintTxId,
                     txTimeout,
                     connection,
-                    "singleGossip",
-                    false
+                    true
                 );
-
+                console.log('status :', status)
                 if (!status?.err) {
                     console.log("Congratulations! Mint succeeded!")
-                    // setAlertState({
-                    //     open: true,
-                    //     message: "Congratulations! Mint succeeded!",
-                    //     severity: "success",
-                    // });
+                    notify({
+                        title: "Success",
+                        text: "Congratulations! Mint succeeded!",
+                        type:'success'
+                        })
                 } else {
                     console.log("Mint failed! Please try again!")
-                    // setAlertState({
-                    //     open: true,
-                    //     message: "Mint failed! Please try again!",
-                    //     severity: "error",
-                    // });
+                    notify({
+                        title: "error",
+                        text: "Mint failed! Please try again!",
+                        type:'error'
+                        })
                 }
             }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -268,9 +268,10 @@
                     message = `Minting period hasn't started yet.`;
                 }
             }
-
+            console.log(error)
             console.log(message)
         } finally {
+            console.log('before fresh All')
             refreshAll()
             isMinting.value = false
         }
