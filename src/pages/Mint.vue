@@ -116,7 +116,8 @@ const refreshCandyMachineState = async () => {
 	} = await getCandyMachineState(
 		wallet.value as anchor.Wallet,
 		candyMachineId,
-		connection
+		connection,
+		id_collection
 	);
 
 	itemsAvailable.value = stateBis.itemsAvailable
