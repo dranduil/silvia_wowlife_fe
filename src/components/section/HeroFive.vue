@@ -5,7 +5,7 @@
                 <div class="col-lg-6 col-sm-9">
                     <div class="row gx-4">
                         <div class="col-xl-8">
-                            <div class="card card-s2" v-for="product in showItem.slice(0,1)" :key="product.id">
+                            <div class="card card-s2" v-for="product in showItem.slice(0, 1)" :key="product.id">
                                 <div class="card-image">
                                     <img :src="product.imgLg" alt="" class="card-img-top card-img-height">
                                 </div>
@@ -13,12 +13,11 @@
                                     <h5 class="card-title text-truncate">{{ product.title }}</h5>
                                     <div class="card-author d-flex align-items-center">
                                         <span class="me-1 card-author-by">By</span>
-                                        <router-link :to="product.authorLink" class="author-link">{{ product.author }}</router-link>
+                                        <router-link :to="product.authorLink" class="author-link">{{ product.author }}
+                                        </router-link>
                                     </div><!-- end card-author -->
                                 </div><!-- end card-body -->
-                                <router-link
-                                class="details"
-                                :to="{
+                                <router-link class="details" :to="{
                                     name: 'ProductDetail',
                                     params: {
                                         id: product.id,
@@ -32,24 +31,24 @@
                                         metaTextThree: product.metaTextThree,
                                         content: product.content,
                                     }
-                                }"
-                            >
-                            </router-link>
+                                }">
+                                </router-link>
                             </div><!-- end card -->
                         </div>
                         <div class="col-xl-4 d-xl-block d-none">
-                            <div class="card card-s2" v-for="product in showItem.slice(1,3)" :key="product.id">
+                            <div class="card card-s2" v-for="product in showItem.slice(1, 3)" :key="product.id">
                                 <div class="card-image">
                                     <img :src="product.imgLg" alt="" class="card-img-top">
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title text-truncate">{{ product.title }}</h5>
                                     <div class="card-author d-flex align-items-center">
-                                            <span class="me-1 card-author-by">By</span>
-                                        <router-link :to="product.authorLink" class="author-link">{{ product.author }}</router-link>
+                                        <span class="me-1 card-author-by">By</span>
+                                        <router-link :to="product.authorLink" class="author-link">{{ product.author }}
+                                        </router-link>
                                     </div><!-- end card-author -->
                                 </div><!-- end card-body -->
-                                <router-link
+                                <!-- <router-link
                                 class="details"
                                 :to="{
                                     name: 'ProductDetail',
@@ -66,15 +65,16 @@
                                     content: product.content,
                                     }
                                 }"
-                            >
-                            </router-link>
+                            > -->
+                                </router-link>
                             </div><!-- end card -->
                         </div><!-- end col -->
                     </div><!-- end row -->
                 </div><!-- end col -->
                 <div class="col-lg-6 col-sm-9">
                     <div class="hero-content pt-lg-0 pb-0 mt-lg-n4">
-                        <h6 class="hero-meta text-uppercase text-primary mb-3">{{ SectionData.heroDataFour.subTitle }}</h6>
+                        <h6 class="hero-meta text-uppercase text-primary mb-3">{{ SectionData.heroDataFour.subTitle }}
+                        </h6>
                         <h1 class="hero-title">{{ SectionData.heroDataFour.title }}</h1>
                     </div><!-- hero-content -->
                 </div><!-- col-lg-6 -->
@@ -88,34 +88,35 @@
 import SectionData from '@/store/store'
 
 export default {
-  name: 'HeroFive',
-  data () {
-    return {
-      SectionData
+    name: 'HeroFive',
+    data() {
+        return {
+            SectionData
+        }
+    },
+    computed: {
+        showItem() {
+            return this.SectionData.productData.products.filter(item => item.itemToShowTwo === 'show')
+        },
+        showItemSingle() {
+            return this.SectionData.productData.products.filter(item => item.itemToShowSingle === 'show')
+        },
     }
-  },
-  computed: {
-    showItem() {
-        return this.SectionData.productData.products.filter(item => item.itemToShowTwo === 'show')
-    },
-    showItemSingle() {
-        return this.SectionData.productData.products.filter(item => item.itemToShowSingle === 'show')
-    },
-  }
 }
 </script>
 
 <style lang="css" scoped>
- .details {
+.details {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
- }
- .author-link {
-   z-index: 2;
-   position: relative;
- }
+}
+
+.author-link {
+    z-index: 2;
+    position: relative;
+}
 </style>
