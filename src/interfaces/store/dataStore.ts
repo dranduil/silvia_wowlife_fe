@@ -34,6 +34,7 @@ export interface Collection {
     id: number,
     name: string
     contract: string,
+    candy_machine_hash:string,
     author_id: number,
     network_id: number,
     cover_image_url: string

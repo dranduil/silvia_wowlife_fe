@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-xl-6 collection-mint">
                         <div>
-                            <ButtonLink link="/mint" text=" Mint collection Now " class="btn btn-dark"></ButtonLink>
+                            <ButtonLink  v-bind:link="collectionMintUrl" text=" Mint collection Now " class="btn btn-dark"></ButtonLink>
                         </div>
                     </div>
                     <div class="col-xl-6 collection-preview">
@@ -40,16 +40,18 @@
     import { useRoute } from "vue-router";
 import ButtonLink from '@/components/common/ButtonLink.vue';
 
-    export default defineComponent({
-        name: 'CollectionView',
-        components: {
-    CollectionViewItems,
-    ButtonLink
-},
-        setup(){
-            const route = useRoute()
-            const store = useStore()
-            store.dispatch(ActionTypes.FetchCollection, {id: route.params.id})
-        }
-    })
+export default defineComponent({
+    name: 'CollectionView',
+    components: {
+        CollectionViewItems,
+        ButtonLink
+    },
+    setup(){
+        const route = useRoute()
+        const store = useStore()
+        store.dispatch(ActionTypes.FetchCollection, {id: route.params.id})
+        const collectionMintUrl = "/mint-collection-id-"+route.params.id
+        return {collectionMintUrl}
+    }
+})
 </script>

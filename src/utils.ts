@@ -1,6 +1,7 @@
 import * as anchor from '@project-serum/anchor';
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
-import { SystemProgram } from '@solana/web3.js';
+import { PublicKey, SystemProgram } from '@solana/web3.js';
+import configuration from '@/config/index'
 import {
   LAMPORTS_PER_SOL,
   SYSVAR_RENT_PUBKEY,
@@ -95,13 +96,38 @@ export const getNetworkToken = async (
   );
 };
 
-export const getCandyMachineId = (): anchor.web3.PublicKey  => {
-  const candyMachineId = new anchor.web3.PublicKey(
-    process.env.VUE_APP_CANDY_MACHINE_ID!,
-  );
-
-  return candyMachineId;
+export const getCandyMachineId = (id: number): anchor.web3.PublicKey => {
+  switch (id) {
+    case 1:
+      return new anchor.web3.PublicKey(
+        process.env.VUE_APP_CANDY_MACHINE_ID_ONE!,
+      );
+      break;
+    case 2:
+      return new anchor.web3.PublicKey(
+        process.env.VUE_APP_CANDY_MACHINE_TWO!,
+      );
+      break;
+    default:
+      return new anchor.web3.PublicKey(
+        process.env.VUE_APP_CANDY_MACHINE_ID_ONE!,
+      );
+  }
 };
+
+export const getCandyMachineIdByIdCollection = async (id_collection: string | string[]): Promise<PublicKey> => {
+  const fetchConfig = {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': `Bearer ${configuration.token}`
+    }
+  }
+  const response = await fetch(`${configuration.url_api}/collections/${id_collection}`, fetchConfig)
+  const json = await response.json()
+  const collection = json.data
+  return new anchor.web3.PublicKey(collection.candy_machine_hash)
+}
 
 
 export function createAssociatedTokenAccountInstruction(

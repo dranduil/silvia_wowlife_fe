@@ -31,4 +31,5 @@
   }, { immediate: true })
 
   const wallet = useAnchorWallet();
+  console.log(wallet)
 </script>

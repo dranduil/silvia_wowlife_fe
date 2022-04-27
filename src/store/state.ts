@@ -52,6 +52,7 @@ export const state: State = {
         id: 0,
         name: "",
         contract: "",
+        candy_machine_hash:"",
         author_id: 0,
         network_id: 0,
         cover_image_url: ""

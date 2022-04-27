@@ -18,7 +18,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/IntroLoad.vue'),
   },
   {
-    path: "/mint",
+    path: "/mint-collection-id-:id",
     name: "Mint",
     component: () => import('@/pages/Mint.vue'),
   },
